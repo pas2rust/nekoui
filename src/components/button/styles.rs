@@ -10,6 +10,7 @@ impl ButtonStyle {
             .text_align(TextAlign::Center)
             .align_items(AlignItems::Center)
             .margin(TwUnit::Three)
+            .cursor(Cursor::Pointer)
             .display(Display::Flex)
             .scale(TwUnit::OneHundred)
             .px(TwUnit::Eight)

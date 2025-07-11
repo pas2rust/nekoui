@@ -6,7 +6,7 @@ impl SpinnerStyle {
     pub fn base() -> TailwindStyles {
         TailwindStyles::new()
             .display(Display::InlineBlock)
-            .animation(Animation::RotateLoop)
+            .animation(Animation::Spin)
             .text_color(Color::Gray(Shade::TwoHundred))
             .fill(Color::Blue(Shade::FiveHundred))
     }

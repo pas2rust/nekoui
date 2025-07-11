@@ -2,6 +2,7 @@ pub mod align_items;
 pub mod animation;
 pub mod color;
 pub mod cursor;
+pub mod dir;
 pub mod display;
 pub mod dto;
 pub mod flex;

@@ -7,11 +7,11 @@ use leptos::prelude::*;
 
 #[component]
 pub fn AvatarImage(
-    src: impl Into<String>,
+    src: Dir,
     #[prop(optional, default = Class::new().light(AvatarStyle::xs()))] class: Class,
 ) -> impl IntoView {
     view! {
-        <img class=class.create() src=src.into() />
+        <img class=class.create() src=src.to_str() />
     }
 }
 
@@ -41,7 +41,7 @@ pub fn AvatarDot(
     view! {
         <div
             class=class.create()
-            class:animate-elastic-loop=move || hover.get()
+            class:animate-bounce=move || hover.get()
         />
     }
 }

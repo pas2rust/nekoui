@@ -1,1 +1,1 @@
-pub mod lucide;
+pub mod icon;

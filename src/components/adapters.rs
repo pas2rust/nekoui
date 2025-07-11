@@ -1,10 +1,7 @@
 use kenzu::{Builder, M_Builder};
-use neto::components::data::*;
-use neto::serde_json;
 use leptos::{html::ElementType, prelude::*, reactive::spawn_local};
+use neto::components::data::*;
 use std::time::Duration;
-
-use crate::components::spinner::spinner::Spinner;
 
 pub fn use_signal_derive<T: Clone + Send + Sync + 'static>(
     derive: impl Fn() -> T + Send + Sync + 'static,
@@ -45,6 +42,7 @@ where
     F: FnOnce() -> N + 'static,
     N: IntoView,
 {
+    crate::load_tailwind();
     mount_to_body(f);
 }
 
@@ -108,13 +106,9 @@ pub fn use_fetch<T: Clone + Send + Sync + 'static>(
         HeaderValue::from_str(&token).expect("From str value in token failed"),
     )]);
 
-    let mut fetch = Http::new()
-        .base_url(base_url)
-        .headers(headers)
-        .build()?;
+    let mut fetch = Http::new().base_url(base_url).headers(headers).build()?;
 
-    fetch
-        .config()?;
+    fetch.config()?;
 
     Ok((result, fetch))
 }
@@ -132,40 +126,4 @@ pub fn use_fetch_builder<T: Clone + Send + Sync + 'static>(
 ) -> Result<(RwSignal<LoadState<T>>, Http), Box<dyn std::error::Error>> {
     let params = f(UseFetchParamsBuilder::default());
     use_fetch(params)
-}
-
-#[component]
-pub fn FetchExample() -> impl IntoView {
-    let (result, fetch) = use_fetch_builder(|build| {
-        build
-            .base_url("https://pokeapi.co/api/v2/pokemon")
-            .token("token")
-    })
-    .expect("Failed to init fetch");
-
-    use_spawn_local(async move {
-        match fetch.get("/ditto", Vec::new()).await {
-            Ok(resp) => match resp.json::<serde_json::Value>().await {
-                Ok(ok) => result.set(LoadState::Success(ok)),
-                Err(err) => result.set(LoadState::Error(format!("Response Error: {err}"))),
-            },
-            Err(e) => {
-                result.set(LoadState::Error(format!("Err: {e}")));
-            }
-        }
-    });
-
-    view! {
-        <div class="p-4">
-            <div>
-                {move ||
-                    match result.get() {
-                        LoadState::Loading => view! { <Spinner /> }.into_any(),
-                        LoadState::Error(err) =>  view! { <h2>{err.clone()}</h2> }.into_any(),
-                        LoadState::Success(json) => view! { <p>{json.to_string()}</p> }.into_any(),
-                    }
-                }
-            </div>
-        </div>
-    }
 }

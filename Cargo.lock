@@ -556,8 +556,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "335ff9f135e4384c8150d6f27c6daed433577f86b4750418338c01a1a2528592"
 dependencies = [
  "cfg-if",
+ "js-sys",
  "libc",
  "wasi 0.11.1+wasi-snapshot-preview1",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -1018,6 +1020,7 @@ dependencies = [
  "cfg-if",
  "either_of",
  "futures",
+ "getrandom 0.2.16",
  "hydration_context",
  "leptos_config",
  "leptos_dom",
@@ -1266,6 +1269,7 @@ dependencies = [
  "leptos",
  "neto",
  "path2enum",
+ "wasm-bindgen",
  "web-sys",
 ]
 
@@ -1418,9 +1422,9 @@ checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
 
 [[package]]
 name = "path2enum"
-version = "0.3.5"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8f4dad563f48f43388d427d0ca38f3a5376683bab0a331644070dc547740ed64"
+checksum = "4593ea9a6ef126be75e79e3eec9a87a4e44c50b93a3ef7c0b0720ef5b49c09af"
 dependencies = [
  "proc-macro2",
  "quote",

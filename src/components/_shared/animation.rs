@@ -5,30 +5,20 @@ use std::borrow::Cow;
 pub enum Animation {
     #[default]
     Inherit,
-    Show,
-    RotateLoop,
-    ElasticLoop,
-    SnowFallLoop,
-    SnowFallSlowLoop,
-    SnowFallFastLoop,
-    RocketLaunchLoop,
-    RocketLaunchSlowLoop,
-    RocketLaunchFastLoop,
+    Spin,
+    Ping,
+    Pulse,
+    Bounce,
 }
 
 impl ToStr for Animation {
     fn to_str(&self) -> Cow<'static, str> {
         match self {
             Animation::Inherit => Cow::Borrowed(""),
-            Animation::Show => Cow::Borrowed("show"),
-            Animation::RotateLoop => Cow::Borrowed("rotate-loop"),
-            Animation::ElasticLoop => Cow::Borrowed("elastic-loop"),
-            Animation::SnowFallLoop => Cow::Borrowed("snow-fall-loop"),
-            Animation::SnowFallSlowLoop => Cow::Borrowed("snow-fall-slow-loop"),
-            Animation::SnowFallFastLoop => Cow::Borrowed("snow-fall-fast-loop"),
-            Animation::RocketLaunchLoop => Cow::Borrowed("rocket-launch-loop"),
-            Animation::RocketLaunchSlowLoop => Cow::Borrowed("rocket-launch-slow-loop"),
-            Animation::RocketLaunchFastLoop => Cow::Borrowed("rocket-launch-fast-loop"),
+            Animation::Spin => Cow::Borrowed("spin"),
+            Animation::Ping => Cow::Borrowed("ping"),
+            Animation::Pulse => Cow::Borrowed("pulse"),
+            Animation::Bounce => Cow::Borrowed("bounce"),
         }
     }
 }

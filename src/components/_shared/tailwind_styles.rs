@@ -188,7 +188,6 @@ impl TailwindStyles {
             ("xl", xl),
             ("2xl", x2l),
         );
-
         classes.join(" ")
     }
 
