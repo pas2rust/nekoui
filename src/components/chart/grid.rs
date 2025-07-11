@@ -1,7 +1,7 @@
+use crate::components::chart::dto::Drawable;
 use kenzu::Builder;
+use tailwind::components::prelude::*;
 use web_sys::CanvasRenderingContext2d;
-
-use crate::components::{_shared::color::Color, chart::dto::Drawable};
 
 #[derive(Builder, Clone, Default, Debug)]
 pub struct GridOptions {

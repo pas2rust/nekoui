@@ -1,5 +1,4 @@
-use crate::components::_shared::prelude::*;
-
+use tailwind::components::prelude::*;
 pub struct SpinnerStyle;
 
 impl SpinnerStyle {

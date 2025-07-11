@@ -1,16 +1,13 @@
-use leptos::prelude::*;
-
-use crate::components::{
-    _shared::color::{Color, Shade},
-    chart::{
-        bar_chart::{BarChart, BarChartOptions, BarOptions, Direction},
-        grid::GridOptions,
-        line_chart::{LineChart, LineChartOptions, LineOptions},
-        pie_chart::{PieChart, PieChartOptions, PieOptions},
-        radial_chart::{RadialChart, RadialChartOptions, RadialOptions},
-        use_canvas::*,
-    },
+use crate::components::chart::{
+    bar_chart::{BarChart, BarChartOptions, BarOptions, Direction},
+    grid::GridOptions,
+    line_chart::{LineChart, LineChartOptions, LineOptions},
+    pie_chart::{PieChart, PieChartOptions, PieOptions},
+    radial_chart::{RadialChart, RadialChartOptions, RadialOptions},
+    use_canvas::*,
 };
+use leptos::prelude::*;
+use tailwind::components::prelude::*;
 
 fn create_line_chart() -> LineChart {
     LineChart::new()

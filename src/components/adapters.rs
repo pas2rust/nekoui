@@ -44,7 +44,7 @@ where
 {
     use wasm_bindgen::JsCast;
     use web_sys::{Document, HtmlLinkElement, Window};
-    
+
     let window: Window = web_sys::window().expect("no window");
     let document: Document = window.document().expect("no document");
 

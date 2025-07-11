@@ -1,13 +1,15 @@
 use leptos::prelude::*;
-use nekoui::components::_shared::prelude::*;
 use nekoui::components::adapters::*;
 use nekoui::components::avatar::prelude::*;
 use nekoui::components::button::prelude::*;
 use nekoui::components::chart::area::area::ChartArea;
+use nekoui::components::dir::Dir;
 use nekoui::components::provider::global::GlobalProvider;
 use nekoui::components::provider::tailwind::use_theme_context;
 use nekoui::components::spinner::spinner::Spinner;
+use nekoui::components::theme::*;
 use nekoui::components::toggle::toggle::*;
+use nekoui::tailwind::components::prelude::*;
 
 #[component]
 fn Buttons() -> impl IntoView {

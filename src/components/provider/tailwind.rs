@@ -1,5 +1,5 @@
-use crate::components::_shared::theme::Theme;
 use crate::components::adapters::*;
+use crate::components::theme::Theme;
 use leptos::prelude::*;
 
 #[component]

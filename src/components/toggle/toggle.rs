@@ -1,8 +1,6 @@
 use super::styles::*;
-use crate::components::{
-    _shared::prelude::*,
-    adapters::{use_provide_ctx, use_rw_signal},
-};
+use crate::components::adapters::{use_provide_ctx, use_rw_signal};
+use crate::components::theme::*;
 use leptos::prelude::*;
 
 #[component]

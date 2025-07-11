@@ -1,5 +1,5 @@
 use super::styles::ButtonStyle;
-use crate::components::_shared::prelude::*;
+use crate::components::theme::*;
 use leptos::prelude::*;
 
 #[component]

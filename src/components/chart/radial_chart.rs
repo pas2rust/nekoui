@@ -1,13 +1,11 @@
 use kenzu::Builder;
+use tailwind::components::prelude::*;
 use web_sys::CanvasRenderingContext2d;
 
-use crate::components::{
-    _shared::color::Color,
-    chart::{
-        dto::Drawable,
-        grid::GridOptions,
-        use_canvas::{ChartData, FontOptions, PaddingOptions},
-    },
+use crate::components::chart::{
+    dto::Drawable,
+    grid::GridOptions,
+    use_canvas::{ChartData, FontOptions, PaddingOptions},
 };
 
 #[derive(Builder, Clone, Default, Debug)]

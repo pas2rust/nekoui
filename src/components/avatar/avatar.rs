@@ -1,7 +1,8 @@
 use super::prelude::*;
+use crate::components::theme::*;
 use crate::components::{
-    _shared::prelude::*,
     adapters::{use_provide_ctx, use_rw_signal},
+    dir::Dir,
 };
 use leptos::prelude::*;
 

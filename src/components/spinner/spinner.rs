@@ -1,5 +1,5 @@
 use super::styles::*;
-use crate::components::{_shared::prelude::*, provider::tailwind::use_theme_context};
+use crate::components::theme::*;
 use leptos::prelude::*;
 
 #[component]

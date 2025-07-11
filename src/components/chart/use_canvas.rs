@@ -1,15 +1,14 @@
+use crate::components::{
+    adapters::{use_effect, use_node_ref},
+    chart::dto::Drawable,
+};
 use kenzu::Builder;
 use leptos::{
     html::Canvas,
     prelude::{Get, NodeRef, window},
 };
+use tailwind::components::prelude::*;
 use web_sys::{CanvasRenderingContext2d, HtmlCanvasElement, wasm_bindgen::JsCast};
-
-use crate::components::{
-    _shared::color::{Color, Shade},
-    adapters::{use_effect, use_node_ref},
-    chart::dto::Drawable,
-};
 
 #[derive(Builder, Clone, Default, Debug)]
 pub struct PaddingOptions {
