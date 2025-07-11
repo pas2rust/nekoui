@@ -1,0 +1,28 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+    * {
+      ::selection {
+        background-color: #830101;
+        color: #ffffff;
+      }
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      font-family: 'fira-code', monospace;
+    }
+  }
+
+@layer utilities {
+    .scrollbar-hidden::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .scrollbar-hidden {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  }
