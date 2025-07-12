@@ -17,7 +17,7 @@ fn main() {
         <link rel="stylesheet" href="public/tailwind.css">
         <link href="public/favicon.ico" rel="icon" type="image/x-icon" />
         <link data-trunk href="public/" rel="copy-dir" />
-        <title>NekoUI</title>
+        <title>NekoノUI・Nyan</title>
     </head>
     <body class="bg-slate-950 text-white">
         {div}
