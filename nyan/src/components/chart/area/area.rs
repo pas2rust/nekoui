@@ -424,27 +424,27 @@ fn create_radial_chart() -> RadialChart {
 #[component]
 pub fn ChartArea() -> impl IntoView {
     view! {
-        <div class="flex justify-center flex-wrap gap-4">
-            <div class="border border-gray-300 rounded-lg shadow-md">
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::BottomUp)) class="w-full h-[500px]" />
+        <div class=ChartAreaStyle::container().to_class()>
+            <div class=ChartAreaStyle::card().to_class()>
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::BottomUp)) class=ChartCanvasStyle::normal().to_class() />
             </div>
-            <div class="border border-gray-300 rounded-lg shadow-md">
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::TopDown)) class="w-full h-[500px]" />
+            <div class=ChartAreaStyle::card().to_class()>
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::TopDown)) class=ChartCanvasStyle::normal().to_class() />
             </div>
-            <div class="border border-gray-300 rounded-lg shadow-md">
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::LeftRight)) class="w-full h-[500px]" />
+            <div class=ChartAreaStyle::card().to_class()>
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::LeftRight)) class=ChartCanvasStyle::normal().to_class() />
             </div>
-            <div class="border border-gray-300 rounded-lg shadow-md">
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::RightLeft)) class="w-full h-[500px]" />
+            <div class=ChartAreaStyle::card().to_class()>
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::RightLeft)) class=ChartCanvasStyle::normal().to_class() />
             </div>
-            <div class="border border-gray-300 rounded-lg shadow-md">
-                <canvas node_ref=use_canvas(create_line_chart()) class="w-full h-[500px]" />
+            <div class=ChartAreaStyle::card().to_class()>
+                <canvas node_ref=use_canvas(create_line_chart()) class=ChartCanvasStyle::normal().to_class() />
             </div>
-            <div class="border border-gray-300 rounded-lg shadow-md">
-                <canvas node_ref=use_canvas(create_pie_chart()) class="w-full h-[500px]" />
+            <div class=ChartAreaStyle::card().to_class()>
+                <canvas node_ref=use_canvas(create_pie_chart()) class=ChartCanvasStyle::normal().to_class() />
             </div>
-            <div class="border border-gray-300 rounded-lg shadow-md">
-                <canvas node_ref=use_canvas(create_radial_chart()) class="w-full h-[800px]" />
+            <div class=ChartAreaStyle::card().to_class()>
+                <canvas node_ref=use_canvas(create_radial_chart()) class=ChartCanvasStyle::tall().to_class() />
             </div>
         </div>
     }

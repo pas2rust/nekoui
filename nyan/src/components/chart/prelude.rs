@@ -1,4 +1,4 @@
-pub use super::area::area::*;
+pub use super::area::{area::*, styles::*};
 pub use super::bar_chart::*;
 pub use super::dto::*;
 pub use super::line_chart::*;

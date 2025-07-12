@@ -8,6 +8,7 @@ pub struct TailwindStyles {
     pub min_width: TwUnit,
     pub rounded: TwUnit,
     pub border_size: TwUnit,
+    pub border_width: TwUnit,
     pub padding: TwUnit,
     pub px: TwUnit,
     pub py: TwUnit,
@@ -106,6 +107,7 @@ impl TailwindStyles {
         push_classes!(
             self,
             &mut classes,
+            (border_width, TwUnit::Inherit, "border-width"),
             (animation, Animation::Inherit, "animate"),
             (object_fit, ObjectFit::Inherit, "object-fit"),
             (duration, TwUnit::Inherit, "duration"),

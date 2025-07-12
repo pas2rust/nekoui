@@ -75,6 +75,10 @@ fn main() {
             SpinnerStyle::md(),
             SpinnerStyle::lg(),
             SpinnerStyle::xl(),
+            ChartAreaStyle::container(),
+            ChartAreaStyle::card(),
+            ChartCanvasStyle::normal(),
+            ChartCanvasStyle::tall(),
         ];
 
         let mut class_set = HashSet::new();
