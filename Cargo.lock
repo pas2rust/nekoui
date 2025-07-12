@@ -1267,7 +1267,6 @@ version = "0.0.1"
 dependencies = [
  "leptos",
  "nyan",
- "regex",
 ]
 
 [[package]]

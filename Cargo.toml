@@ -34,7 +34,6 @@ members = [
 leptos = { version = "0.8.2", features = ["csr"] }
 
 [build-dependencies]
-regex = "1"
 nyan = { path = "./nyan" }
 
 [package.metadata]
