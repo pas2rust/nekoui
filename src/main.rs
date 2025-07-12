@@ -1,4 +1,4 @@
-use nyan::prelude::*;
+use nekoui::nyan::prelude::*;
 
 #[component]
 fn Buttons() -> impl IntoView {
