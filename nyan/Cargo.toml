@@ -1,0 +1,22 @@
+[package]
+name = "nyan"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+leptos = { workspace = true }
+kenzu = "0.0.2"
+neto = { version = "0.0", features = ["wasm"]}
+path2enum = "0.4"
+wasm-bindgen = "0.2.100"
+web-sys = { version = "0.3", features = [
+    "CanvasRenderingContext2d",
+    "HtmlCanvasElement",
+    "Document",
+    "Element",
+    "Window",
+    "TextMetrics",
+] }
+
+[lib]
+path = "src/lib.rs"
