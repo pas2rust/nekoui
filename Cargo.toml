@@ -1,5 +1,6 @@
 [package]
 name = "nekoui"
+build = "build.rs"
 version = "0.0.1"
 edition = "2024"
 license = "MIT OR Apache-2.0"
@@ -33,10 +34,8 @@ members = [
 leptos = { version = "0.8.2", features = ["csr"] }
 
 [build-dependencies]
-
-
-
-
+regex = "1"
+nyan = { path = "./nyan" }
 
 [package.metadata]
 assets = ["dist", "public"]
