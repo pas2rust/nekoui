@@ -37,9 +37,7 @@ fn main() {
     use_mount_to_body(|| {
         view! {
             <GlobalProvider>
-                <Buttons/>
-                <App/>
-                <Spinner/>
+
                 <ChartArea/>
             </GlobalProvider>
         }

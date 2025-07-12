@@ -2,6 +2,7 @@ use nyan::components::prelude::*;
 use std::collections::HashSet;
 use std::fs;
 use std::path::Path;
+use std::process::Command;
 
 fn main() {
     let dev_mode = cfg!(debug_assertions);
@@ -100,6 +101,22 @@ fn main() {
             )),
         )
         .expect("Failed to write default index.html");
+        let status = Command::new("tailwindcss")
+            .args(&[
+                "-i",
+                "./main.css",
+                "-o",
+                "./public/tailwind.css",
+                "--minify",
+            ])
+            .status()
+            .expect("failed to execute tailwindcss");
+
+        if status.success() {
+            println!("cargo:warning=✅ Tailwind CSS generated successfully.");
+        } else {
+            eprintln!("cargo:warning=❌ Failed to generate Tailwind CSS.");
+        }
     } else {
         fs::write(index_path, default_html("".into())).expect("Failed to write default index.html");
     }
