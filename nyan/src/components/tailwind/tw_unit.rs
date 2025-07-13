@@ -18,59 +18,69 @@ pub enum TwUnit {
     SevenXl,
     EightXl,
     NineXl,
-    Zero,                 // 0
-    ZeroPointFive,        // 0.5
-    One,                  // 1
-    Two,                  // 2
-    TwoHalf,              // 2.5
-    Three,                // 3
-    Four,                 // 4
-    Five,                 // 5
-    Six,                  // 6
-    Seven,                // 7
-    Eight,                // 8
-    Nine,                 // 9
-    Ten,                  // 10
-    Eleven,               // 11
-    Twelve,               // 12
-    Fourteen,             // 14
-    Sixteen,              // 16
-    Twenty,               // 20
-    TwentyFour,           // 24
-    TwentyEight,          // 28
-    ThirtyTwo,            // 32
-    ThirtySix,            // 36
-    Forty,                // 40
-    FortyFour,            // 44
-    FortyEight,           // 48
-    FiftyTwo,             // 52
-    FiftySix,             // 56
-    Sixty,                // 60
-    SixtyFour,            // 64
-    SeventyTwo,           // 72
-    Eighty,               // 80
-    NinetySix,            // 96
-    Half,                 // 1/2
-    OneThird,             // 1/3
-    TwoThirds,            // 2/3
-    OneFourth,            // 1/4
-    ThreeFourths,         // 3/4
-    OneFifth,             // 1/5
-    TwoFifths,            // 2/5
-    ThreeFifths,          // 3/5
-    FourFifths,           // 4/5
-    OneSixth,             // 1/6
-    FiveSixths,           // 5/6,
-    Fifty,                // 50%
-    SeventyFive,          // 75%
-    Ninety,               // 90%
-    NinetyFive,           // 95%
-    OneHundred,           // 100%
-    OneHundredFive,       // 105%
-    OneHundredTen,        // 110%
-    OneHundredTwentyFive, // 125%
-    OneHundredFifty,      // 150%
-    ThreeHundred,
+    Zero,                    // 0
+    ZeroPointFive,           // 0.5
+    One,                     // 1
+    Two,                     // 2
+    TwoHalf,                 // 2.5
+    Three,                   // 3
+    Four,                    // 4
+    Five,                    // 5
+    Six,                     // 6
+    Seven,                   // 7
+    Eight,                   // 8
+    Nine,                    // 9
+    Ten,                     // 10
+    Eleven,                  // 11
+    Twelve,                  // 12
+    Fourteen,                // 14
+    Sixteen,                 // 16
+    Twenty,                  // 20
+    TwentyFour,              // 24
+    TwentyEight,             // 28
+    ThirtyTwo,               // 32
+    ThirtySix,               // 36
+    Forty,                   // 40
+    FortyFour,               // 44
+    FortyEight,              // 48
+    FiftyTwo,                // 52
+    FiftySix,                // 56
+    Sixty,                   // 60
+    SixtyFour,               // 64
+    SeventyTwo,              // 72
+    Eighty,                  // 80
+    NinetySix,               // 96
+    Half,                    // 1/2
+    OneThird,                // 1/3
+    TwoThirds,               // 2/3
+    OneFourth,               // 1/4
+    ThreeFourths,            // 3/4
+    OneFifth,                // 1/5
+    TwoFifths,               // 2/5
+    ThreeFifths,             // 3/5
+    FourFifths,              // 4/5
+    OneSixth,                // 1/6
+    FiveSixths,              // 5/6,
+    Fifty,                   // 50%
+    FiftyRaw,                // 50
+    SeventyFive,             // 75%
+    SeventyFiveRaw,          // 75
+    Ninety,                  // 90%
+    NinetyRaw,               // 90
+    NinetyFive,              // 95%
+    NinetyFiveRaw,           // 95
+    OneHundred,              // 100%
+    OneHundredRaw,           // 100
+    OneHundredFive,          // 105%
+    OneHundredFiveRaw,       // 105
+    OneHundredTen,           // 110%
+    OneHundredTenRaw,        // 110
+    OneHundredTwentyFive,    // 125%
+    OneHundredTwentyFiveRaw, // 125
+    OneHundredFifty,         // 150%
+    OneHundredFiftyRaw,      // 150
+    ThreeHundred,            // 300%
+    ThreeHundredRaw,         // 300
     Full,
     Fit,
     Px(f32),
@@ -153,15 +163,25 @@ impl ToStr for TwUnit {
             Full => Cow::Borrowed("full"),
             Fit => Cow::Borrowed("fit"),
             Fifty => Cow::Borrowed("50%"),
+            FiftyRaw => Cow::Borrowed("50"),
             SeventyFive => Cow::Borrowed("75%"),
+            SeventyFiveRaw => Cow::Borrowed("75"),
             Ninety => Cow::Borrowed("90%"),
+            NinetyRaw => Cow::Borrowed("90"),
             NinetyFive => Cow::Borrowed("95%"),
+            NinetyFiveRaw => Cow::Borrowed("95"),
             OneHundred => Cow::Borrowed("100%"),
+            OneHundredRaw => Cow::Borrowed("100"),
             OneHundredFive => Cow::Borrowed("105%"),
+            OneHundredFiveRaw => Cow::Borrowed("105"),
             OneHundredTen => Cow::Borrowed("110%"),
+            OneHundredTenRaw => Cow::Borrowed("110"),
             OneHundredTwentyFive => Cow::Borrowed("125%"),
+            OneHundredTwentyFiveRaw => Cow::Borrowed("125"),
             OneHundredFifty => Cow::Borrowed("150%"),
+            OneHundredFiftyRaw => Cow::Borrowed("150"),
             ThreeHundred => Cow::Borrowed("300%"),
+            ThreeHundredRaw => Cow::Borrowed("300"),
             Px(val) => Cow::Owned(format!("[{}px]", val)),
             Percent(val) => Cow::Owned(format!("[{}%]", val)),
             Em(val) => Cow::Owned(format!("[{}em]", val)),

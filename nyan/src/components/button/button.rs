@@ -5,10 +5,7 @@ use leptos::prelude::*;
 #[component]
 pub fn Button(
     children: Children,
-    #[prop(optional, default = Class::new()
-        .light(ButtonStyle::glass())
-        .dark(ButtonStyle::neon()))
-    ]
+    #[prop(optional, default = ButtonStyle::neko_neon())]
     class: Class,
 ) -> impl IntoView {
     view! {

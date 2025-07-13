@@ -31,7 +31,7 @@ members = [
 ]
 
 [workspace.dependencies]
-leptos = { version = "0.8.2", features = ["csr"] }
+leptos = { version = "0.8", features = ["csr"] }
 
 [build-dependencies]
 nyan = { path = "./nyan" }

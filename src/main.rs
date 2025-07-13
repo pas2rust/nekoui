@@ -8,9 +8,43 @@ fn Buttons() -> impl IntoView {
        <Button
             on:click=move |_| {
                 theme.set(match theme.get() {
+                    Theme::Light => Theme::Monokai,
+                    Theme::Monokai => Theme::Dracula,
+                    Theme::Dracula => Theme::Carbon,
+                    Theme::Carbon => Theme::Tokyo,
+                    Theme::Tokyo => Theme::Dark,
                     Theme::Dark => Theme::Light,
-                    Theme::Light => Theme::Dark,
-                    _ => Theme::Dark
+                    _ => Theme::Light,
+                });
+        }>
+            {move || theme.get().to_str().to_uppercase()}
+        </Button>
+        <Button
+            class=ButtonStyle::neko_fill().m(TwUnit::Twelve)
+            on:click=move |_| {
+                theme.set(match theme.get() {
+                    Theme::Light => Theme::Monokai,
+                    Theme::Monokai => Theme::Dracula,
+                    Theme::Dracula => Theme::Carbon,
+                    Theme::Carbon => Theme::Tokyo,
+                    Theme::Tokyo => Theme::Dark,
+                    Theme::Dark => Theme::Light,
+                    _ => Theme::Light,
+                });
+        }>
+            {move || theme.get().to_str().to_uppercase()}
+        </Button>
+         <Button
+            class=ButtonStyle::neko_outline()
+            on:click=move |_| {
+                theme.set(match theme.get() {
+                    Theme::Light => Theme::Monokai,
+                    Theme::Monokai => Theme::Dracula,
+                    Theme::Dracula => Theme::Carbon,
+                    Theme::Carbon => Theme::Tokyo,
+                    Theme::Tokyo => Theme::Dark,
+                    Theme::Dark => Theme::Light,
+                    _ => Theme::Light,
                 });
         }>
             {move || theme.get().to_str().to_uppercase()}
@@ -36,10 +70,10 @@ fn App() -> impl IntoView {
 fn main() {
     use_mount_to_body(|| {
         view! {
-            <GlobalProvider>
-
+            <NekoノUI・Nyan>
+                <Buttons/>
                 <ChartArea/>
-            </GlobalProvider>
+            </NekoノUI・Nyan>
         }
     });
 }
