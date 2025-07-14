@@ -20,7 +20,7 @@ fn Buttons() -> impl IntoView {
             {move || theme.get().to_str().to_uppercase()}
         </Button>
         <Button
-            class=ButtonStyle::neko_fill().apply(ButtonStyle::fill_lg())
+            class=ButtonStyle::neko_fill().apply(ButtonStyle::lg())
             on:click=move |_| {
                 theme.set(match theme.get() {
                     Theme::Light => Theme::Monokai,
@@ -36,6 +36,21 @@ fn Buttons() -> impl IntoView {
         </Button>
          <Button
             class=ButtonStyle::neko_outline()
+            on:click=move |_| {
+                theme.set(match theme.get() {
+                    Theme::Light => Theme::Monokai,
+                    Theme::Monokai => Theme::Dracula,
+                    Theme::Dracula => Theme::Carbon,
+                    Theme::Carbon => Theme::Tokyo,
+                    Theme::Tokyo => Theme::Dark,
+                    Theme::Dark => Theme::Light,
+                    _ => Theme::Light,
+                });
+        }>
+            {move || theme.get().to_str().to_uppercase()}
+        </Button>
+         <Button
+            class=ButtonStyle::neko_gradient()
             on:click=move |_| {
                 theme.set(match theme.get() {
                     Theme::Light => Theme::Monokai,

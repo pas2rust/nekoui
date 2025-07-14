@@ -510,8 +510,8 @@ impl ButtonStyle {
             .hover(TailwindStyles::new().opacity(TwUnit::SeventyTwo).to_box())
     }
 
-    pub fn fill_lg() -> TailwindStyles {
-        Self::fill()
+    pub fn lg() -> TailwindStyles {
+        TailwindStyles::new()
             .margin(TwUnit::Three)
             .px(TwUnit::TwentyFour)
             .py(TwUnit::Six)
@@ -525,7 +525,7 @@ impl BuildClass for ButtonStyle {
             Self::neko_outline().to_box(),
             Self::neko_gradient().to_box(),
             Self::neko_neon().to_box(),
-            Self::fill_lg().to_box(),
+            Self::lg().to_box(),
         ]
     }
 }
