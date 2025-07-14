@@ -29,32 +29,8 @@ pub struct Class {
     pub neko: TailwindStyles,
 }
 
-impl Class {
-    pub fn p(self, padding: TwUnit) -> Self {
-        Self::new()
-            .carbon(self.carbon.padding(padding))
-            .dark(self.dark.padding(padding))
-            .light(self.light.padding(padding))
-            .monokai(self.monokai.padding(padding))
-            .tokyo(self.tokyo.padding(padding))
-            .dracula(self.dracula.padding(padding))
-            .custom(self.custom.padding(padding))
-            .neko(self.neko.padding(padding))
-    }
-
-    pub fn m(self, margin: TwUnit) -> Self {
-        Self::new()
-            .carbon(self.carbon.margin(margin))
-            .dark(self.dark.margin(margin))
-            .light(self.light.margin(margin))
-            .monokai(self.monokai.margin(margin))
-            .tokyo(self.tokyo.margin(margin))
-            .dracula(self.dracula.margin(margin))
-            .custom(self.custom.margin(margin))
-            .neko(self.neko.margin(margin))
-    }
-
-    pub fn to_class(&self) -> String {
+impl ToClass for Class {
+    fn to_class(&self) -> String {
         let dark = self.dark.to_class();
         let light = self.light.to_class();
         let tokyo = self.tokyo.to_class();
@@ -64,6 +40,214 @@ impl Class {
         let carbon = self.carbon.to_class();
         let neko = self.neko.to_class();
         format!("{dark}{light}{tokyo}{carbon}{dracula}{monokai}{custom}{neko}")
+    }
+}
+
+impl Class {
+    pub fn to_box(self) -> Box<Self> {
+        Box::new(self)
+    }
+    pub fn apply(self, variant: TailwindStyles) -> Self {
+        let TailwindStyles {
+            padding,
+            margin,
+            px,
+            py,
+            pb,
+            pt,
+            pr,
+            pl,
+            width,
+            height,
+            mb,
+            mt,
+            mr,
+            ml,
+            md,
+            lg,
+            sm,
+            xxl,
+            xl,
+            ..
+        } = variant;
+
+        Self::new()
+            .carbon(
+                self.carbon
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm.clone())
+                    .md(md.clone())
+                    .lg(lg.clone())
+                    .xl(xl.clone())
+                    .xxl(xxl.clone()),
+            )
+            .dark(
+                self.dark
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm.clone())
+                    .md(md.clone())
+                    .lg(lg.clone())
+                    .xl(xl.clone())
+                    .xxl(xxl.clone()),
+            )
+            .light(
+                self.light
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm.clone())
+                    .md(md.clone())
+                    .lg(lg.clone())
+                    .xl(xl.clone())
+                    .xxl(xxl.clone()),
+            )
+            .monokai(
+                self.monokai
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm.clone())
+                    .md(md.clone())
+                    .lg(lg.clone())
+                    .xl(xl.clone())
+                    .xxl(xxl.clone()),
+            )
+            .tokyo(
+                self.tokyo
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm.clone())
+                    .md(md.clone())
+                    .lg(lg.clone())
+                    .xl(xl.clone())
+                    .xxl(xxl.clone()),
+            )
+            .dracula(
+                self.dracula
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm.clone())
+                    .md(md.clone())
+                    .lg(lg.clone())
+                    .xl(xl.clone())
+                    .xxl(xxl.clone()),
+            )
+            .custom(
+                self.custom
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm.clone())
+                    .md(md.clone())
+                    .lg(lg.clone())
+                    .xl(xl.clone())
+                    .xxl(xxl.clone()),
+            )
+            .neko(
+                self.neko
+                    .padding(padding)
+                    .margin(margin)
+                    .px(px)
+                    .py(py)
+                    .width(width)
+                    .height(height)
+                    .pb(pb)
+                    .pl(pl)
+                    .pt(pt)
+                    .pr(pr)
+                    .mb(mb)
+                    .mt(mt)
+                    .mr(mr)
+                    .ml(ml)
+                    .sm(sm)
+                    .md(md)
+                    .lg(lg)
+                    .xl(xl)
+                    .xxl(xxl),
+            )
     }
     pub fn create(&self) -> Signal<String> {
         use_memo({

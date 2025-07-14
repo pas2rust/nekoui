@@ -20,7 +20,7 @@ fn Buttons() -> impl IntoView {
             {move || theme.get().to_str().to_uppercase()}
         </Button>
         <Button
-            class=ButtonStyle::neko_fill().m(TwUnit::Twelve)
+            class=ButtonStyle::neko_fill().apply(ButtonStyle::fill_lg())
             on:click=move |_| {
                 theme.set(match theme.get() {
                     Theme::Light => Theme::Monokai,
@@ -70,10 +70,11 @@ fn App() -> impl IntoView {
 fn main() {
     use_mount_to_body(|| {
         view! {
-            <NekoノUI・Nyan>
+            <NekoProvider>
+                <App/>
                 <Buttons/>
                 <ChartArea/>
-            </NekoノUI・Nyan>
+            </NekoProvider>
         }
     });
 }

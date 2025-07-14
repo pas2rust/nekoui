@@ -1,4 +1,4 @@
-use leptos::{mount::mount_to_body, IntoView};
+use leptos::{IntoView, mount::mount_to_body};
 
 pub fn use_mount_to_body<F, N>(f: F)
 where

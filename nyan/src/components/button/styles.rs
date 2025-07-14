@@ -509,15 +509,23 @@ impl ButtonStyle {
             ))
             .hover(TailwindStyles::new().opacity(TwUnit::SeventyTwo).to_box())
     }
+
+    pub fn fill_lg() -> TailwindStyles {
+        Self::fill()
+            .margin(TwUnit::Three)
+            .px(TwUnit::TwentyFour)
+            .py(TwUnit::Six)
+    }
 }
 
 impl BuildClass for ButtonStyle {
-    fn build() -> Vec<Class> {
+    fn build() -> Vec<Box<dyn ToClass>> {
         vec![
-            Self::neko_fill(),
-            Self::neko_outline(),
-            Self::neko_gradient(),
-            Self::neko_neon(),
+            Self::neko_fill().to_box(),
+            Self::neko_outline().to_box(),
+            Self::neko_gradient().to_box(),
+            Self::neko_neon().to_box(),
+            Self::fill_lg().to_box(),
         ]
     }
 }

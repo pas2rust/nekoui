@@ -15,6 +15,14 @@ pub struct TailwindStyles {
     pub margin: TwUnit,
     pub duration: TwUnit,
     pub gap: TwUnit,
+    pub pb: TwUnit,
+    pub pt: TwUnit,
+    pub pr: TwUnit,
+    pub pl: TwUnit,
+    pub mb: TwUnit,
+    pub mt: TwUnit,
+    pub mr: TwUnit,
+    pub ml: TwUnit,
     pub space_x: TwUnit,
     pub outline: Outline,
     pub space_y: TwUnit,
@@ -79,7 +87,7 @@ pub struct TailwindStyles {
     pub md: Option<Box<Self>>,
     pub lg: Option<Box<Self>>,
     pub xl: Option<Box<Self>>,
-    pub x2l: Option<Box<Self>>,
+    pub xxl: Option<Box<Self>>,
 }
 
 macro_rules! push_classes {
@@ -100,8 +108,8 @@ macro_rules! push_variants {
     };
 }
 
-impl TailwindStyles {
-    pub fn to_class(&self) -> String {
+impl ToClass for TailwindStyles {
+    fn to_class(&self) -> String {
         let mut classes = vec![];
 
         push_classes!(
@@ -169,6 +177,14 @@ impl TailwindStyles {
             (flex_grow, FlexGrow::Inherit, "grow"),
             (flex_shrink, FlexShrink::Inherit, "shrink"),
             (align_items, AlignItems::Inherit, "items"),
+            (pb, TwUnit::Inherit, "pb"),
+            (pt, TwUnit::Inherit, "pt"),
+            (pr, TwUnit::Inherit, "pr"),
+            (pl, TwUnit::Inherit, "pl"),
+            (mb, TwUnit::Inherit, "mb"),
+            (mt, TwUnit::Inherit, "mt"),
+            (mr, TwUnit::Inherit, "mr"),
+            (ml, TwUnit::Inherit, "ml"),
         );
 
         push_variants!(
@@ -188,13 +204,15 @@ impl TailwindStyles {
             ("md", md),
             ("lg", lg),
             ("xl", xl),
-            ("2xl", x2l),
+            ("xxl", xxl),
         );
 
         let classes_str = classes.join(" ");
         classes_str
     }
+}
 
+impl TailwindStyles {
     fn push_variant(&self, prefix: &str, variant: &Option<Box<Self>>, classes: &mut Vec<String>) {
         if let Some(v) = variant {
             for class in v.to_class().split_whitespace() {

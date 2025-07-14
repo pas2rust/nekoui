@@ -31,7 +31,7 @@ impl AvatarContainerStyle {
 }
 
 impl AvatarStyle {
-    pub fn base() -> TailwindStyles {
+    pub fn offline() -> TailwindStyles {
         TailwindStyles::new()
             .object_fit(ObjectFit::Cover)
             .rounded(TwUnit::Full)
@@ -42,38 +42,40 @@ impl AvatarStyle {
     }
 
     pub fn xs() -> TailwindStyles {
-        Self::base().width(TwUnit::Twelve).height(TwUnit::Twelve)
+        Self::offline().width(TwUnit::Twelve).height(TwUnit::Twelve)
     }
 
     pub fn sm() -> TailwindStyles {
-        Self::base().width(TwUnit::Sixteen).height(TwUnit::Sixteen)
+        Self::offline()
+            .width(TwUnit::Sixteen)
+            .height(TwUnit::Sixteen)
     }
 
     pub fn md() -> TailwindStyles {
-        Self::base().width(TwUnit::Twenty).height(TwUnit::Twenty)
+        Self::offline().width(TwUnit::Twenty).height(TwUnit::Twenty)
     }
 
     pub fn lg() -> TailwindStyles {
-        Self::base()
+        Self::offline()
             .width(TwUnit::TwentyFour)
             .height(TwUnit::TwentyFour)
     }
 
     pub fn xl() -> TailwindStyles {
-        Self::base()
+        Self::offline()
             .width(TwUnit::TwentyEight)
             .height(TwUnit::TwentyEight)
     }
 
     pub fn xxl() -> TailwindStyles {
-        Self::base()
+        Self::offline()
             .width(TwUnit::ThirtyTwo)
             .height(TwUnit::ThirtyTwo)
     }
 }
 
 impl AvatarDotStyle {
-    pub fn base() -> TailwindStyles {
+    pub fn offline() -> TailwindStyles {
         TailwindStyles::new()
             .position(Position::Absolute)
             .bg_color(Color::Gray(Shade::FiveHundred))
@@ -87,26 +89,32 @@ impl AvatarDotStyle {
     }
 
     pub fn xs() -> TailwindStyles {
-        Self::base().left(TwUnit::Ten)
+        Self::offline().left(TwUnit::Ten)
     }
 
     pub fn sm() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(54.0))
+        Self::offline().left(TwUnit::Px(54.0))
     }
 
     pub fn md() -> TailwindStyles {
-        Self::base().left(TwUnit::Sixteen)
+        Self::offline().left(TwUnit::Sixteen)
     }
 
     pub fn lg() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(75.0))
+        Self::offline().left(TwUnit::Px(75.0))
     }
 
     pub fn xl() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(90.0))
+        Self::offline().left(TwUnit::Px(90.0))
     }
 
     pub fn xxl() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(105.0))
+        Self::offline().left(TwUnit::Px(105.0))
+    }
+}
+
+impl BuildClass for AvatarStyle {
+    fn build() -> Vec<Box<dyn ToClass>> {
+        vec![]
     }
 }
