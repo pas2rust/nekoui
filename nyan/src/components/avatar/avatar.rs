@@ -5,7 +5,7 @@ use leptos::prelude::*;
 #[component]
 pub fn AvatarImage(
     src: Dir,
-    #[prop(optional, default = Class::new().light(AvatarStyle::xs()))] class: Class,
+    #[prop(optional, default = AvatarStyle::offline())] class: Class,
 ) -> impl IntoView {
     view! {
         <img class=class.create() src=src.to_str() />
@@ -32,7 +32,7 @@ pub fn AvatarContainer(
 
 #[component]
 pub fn AvatarDot(
-    #[prop(optional, default = Class::new().light(AvatarDotStyle::xs()))] class: Class,
+    #[prop(optional, default = AvatarDotStyle::offline())] class: Class,
 ) -> impl IntoView {
     let hover = use_context::<RwSignal<bool>>().expect("hover context must be provided");
     view! {

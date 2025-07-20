@@ -117,7 +117,6 @@ impl ToClass for TailwindStyles {
             &mut classes,
             (border_width, TwUnit::Inherit, "border-width"),
             (animation, Animation::Inherit, "animate"),
-            (object_fit, ObjectFit::Inherit, "object-fit"),
             (duration, TwUnit::Inherit, "duration"),
             (backdrop_blur, TwUnit::Inherit, "backdrop-blur"),
             (gradient_colors, GradientColors::Inherit, ""),
@@ -185,6 +184,7 @@ impl ToClass for TailwindStyles {
             (mt, TwUnit::Inherit, "mt"),
             (mr, TwUnit::Inherit, "mr"),
             (ml, TwUnit::Inherit, "ml"),
+            (object_fit, ObjectFit::Inherit, "object-fit"),
         );
 
         push_variants!(

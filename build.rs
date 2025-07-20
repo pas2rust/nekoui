@@ -27,7 +27,7 @@ fn main() {
         )
     };
     if dev_mode {
-        let styles = ButtonStyle::build();
+        let styles = ButtonStyle::build().into_iter().chain(AvatarStyle::build());
 
         let mut class_set = HashSet::new();
         for style in styles {

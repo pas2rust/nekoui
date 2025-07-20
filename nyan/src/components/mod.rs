@@ -3,7 +3,6 @@ pub mod button;
 pub mod chart;
 pub mod data;
 pub mod dir;
-pub mod dto;
 pub mod prelude;
 pub mod provider;
 pub mod spinner;

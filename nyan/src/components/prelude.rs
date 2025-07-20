@@ -3,7 +3,6 @@ pub use super::button::prelude::*;
 pub use super::chart::prelude::*;
 pub use super::data::*;
 pub use super::dir::*;
-pub use super::dto::*;
 pub use super::provider::prelude::*;
 pub use super::spinner::prelude::*;
 pub use super::tailwind::prelude::*;

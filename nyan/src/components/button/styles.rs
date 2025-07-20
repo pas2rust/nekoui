@@ -354,33 +354,33 @@ impl ButtonStyle {
 
     pub fn gradient_light() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
-            Color::Purple(Shade::FiveHundred),
-            Color::Fuchsia(Shade::FiveHundred),
-            Color::Pink(Shade::FiveHundred),
+            Color::Gray(Shade::FiveHundred),
+            Color::Slate(Shade::FiveHundred),
+            Color::Gray(Shade::FiveHundred),
         ))
     }
 
     pub fn gradient_dark() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
             Color::Slate(Shade::SevenHundred),
-            Color::Indigo(Shade::SixHundred),
-            Color::Purple(Shade::SixHundred),
+            Color::Slate(Shade::SixHundred),
+            Color::Slate(Shade::SevenHundred),
         ))
     }
 
     pub fn gradient_monokai() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
-            Color::Fuchsia(Shade::SixHundred),
-            Color::Orange(Shade::FiveHundred),
+            Color::Pink(Shade::SixHundred),
+            Color::Fuchsia(Shade::FiveHundred),
             Color::Red(Shade::FiveHundred),
         ))
     }
 
     pub fn gradient_dracula() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
-            Color::Pink(Shade::FiveHundred),
-            Color::Purple(Shade::FourHundred),
-            Color::Slate(Shade::SixHundred),
+            Color::Purple(Shade::FiveHundred),
+            Color::Pink(Shade::FourHundred),
+            Color::Violet(Shade::SixHundred),
         ))
     }
 
@@ -394,7 +394,7 @@ impl ButtonStyle {
 
     pub fn gradient_tokyo() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
-            Color::Indigo(Shade::FiveHundred),
+            Color::Violet(Shade::FiveHundred),
             Color::Purple(Shade::FiveHundred),
             Color::Fuchsia(Shade::FiveHundred),
         ))
@@ -510,11 +510,46 @@ impl ButtonStyle {
             .hover(TailwindStyles::new().opacity(TwUnit::SeventyTwo).to_box())
     }
 
+    pub fn xs() -> TailwindStyles {
+        TailwindStyles::new()
+            .margin(TwUnit::Three)
+            .px(TwUnit::Two)
+            .py(TwUnit::TwoHalf)
+    }
+
+    pub fn sm() -> TailwindStyles {
+        TailwindStyles::new()
+            .margin(TwUnit::Three)
+            .px(TwUnit::Four)
+            .py(TwUnit::TwoHalf)
+    }
+
+    pub fn md() -> TailwindStyles {
+        TailwindStyles::new()
+            .margin(TwUnit::Three)
+            .px(TwUnit::Eight)
+            .py(TwUnit::TwoHalf)
+    }
+
     pub fn lg() -> TailwindStyles {
         TailwindStyles::new()
             .margin(TwUnit::Three)
-            .px(TwUnit::TwentyFour)
-            .py(TwUnit::Six)
+            .px(TwUnit::Ten)
+            .py(TwUnit::TwoHalf)
+    }
+
+    pub fn xl() -> TailwindStyles {
+        TailwindStyles::new()
+            .margin(TwUnit::Three)
+            .px(TwUnit::Twelve)
+            .py(TwUnit::TwoHalf)
+    }
+
+    pub fn xxl() -> TailwindStyles {
+        TailwindStyles::new()
+            .margin(TwUnit::Three)
+            .px(TwUnit::ThirtyTwo)
+            .py(TwUnit::TwoHalf)
     }
 }
 
@@ -525,7 +560,12 @@ impl BuildClass for ButtonStyle {
             Self::neko_outline().to_box(),
             Self::neko_gradient().to_box(),
             Self::neko_neon().to_box(),
+            Self::xs().to_box(),
+            Self::sm().to_box(),
+            Self::md().to_box(),
             Self::lg().to_box(),
+            Self::xl().to_box(),
+            Self::xxl().to_box(),
         ]
     }
 }

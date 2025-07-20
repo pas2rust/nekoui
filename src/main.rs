@@ -70,9 +70,21 @@ fn Buttons() -> impl IntoView {
 #[component]
 fn App() -> impl IntoView {
     view! {
-        <AvatarContainer>
+         <AvatarContainer>
             <AvatarImage src=Dir::PublicノAssetsノPas・jpg />
             <AvatarDot />
+        </AvatarContainer>
+        <AvatarContainer>
+            <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
+            <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::xs()) />
+        </AvatarContainer>
+        <AvatarContainer>
+            <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
+            <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::xs()) />
+        </AvatarContainer>
+        <AvatarContainer>
+            <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
+            <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::xs()) />
         </AvatarContainer>
         <ToggleContainer>
             <ToggleButton>

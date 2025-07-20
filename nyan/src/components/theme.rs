@@ -15,6 +15,7 @@ pub enum Theme {
     Dracula,
     Custom,
     Carbon,
+    Rust,
 }
 
 #[derive(Builder, Default, Debug, Clone)]
@@ -27,6 +28,7 @@ pub struct Class {
     pub custom: TailwindStyles,
     pub carbon: TailwindStyles,
     pub neko: TailwindStyles,
+    pub rust: TailwindStyles,
 }
 
 impl ToClass for Class {
@@ -39,15 +41,13 @@ impl ToClass for Class {
         let custom = self.custom.to_class();
         let carbon = self.carbon.to_class();
         let neko = self.neko.to_class();
-        format!("{dark}{light}{tokyo}{carbon}{dracula}{monokai}{custom}{neko}")
+        let rust = self.rust.to_class();
+        format!(" {dark} {light} {tokyo} {carbon} {dracula} {monokai} {custom} {neko} {rust} ")
     }
 }
 
-impl Class {
-    pub fn to_box(self) -> Box<Self> {
-        Box::new(self)
-    }
-    pub fn apply(self, variant: TailwindStyles) -> Self {
+macro_rules! apply_variant {
+    ($self:ident, $theme:ident, $variant:expr) => {{
         let TailwindStyles {
             padding,
             margin,
@@ -63,191 +63,53 @@ impl Class {
             mt,
             mr,
             ml,
-            md,
-            lg,
-            sm,
-            xxl,
-            xl,
+            ref md,
+            ref lg,
+            ref sm,
+            ref xxl,
+            ref xl,
             ..
-        } = variant;
+        } = $variant;
 
+        $self
+            .$theme
+            .padding(padding)
+            .margin(margin)
+            .px(px)
+            .py(py)
+            .width(width)
+            .height(height)
+            .pb(pb)
+            .pl(pl)
+            .pt(pt)
+            .pr(pr)
+            .mb(mb)
+            .mt(mt)
+            .mr(mr)
+            .ml(ml)
+            .sm(sm.clone())
+            .md(md.clone())
+            .lg(lg.clone())
+            .xl(xl.clone())
+            .xxl(xxl.clone())
+    }};
+}
+
+impl Class {
+    pub fn to_box(self) -> Box<Self> {
+        Box::new(self)
+    }
+    pub fn apply(self, variant: TailwindStyles) -> Self {
         Self::new()
-            .carbon(
-                self.carbon
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm.clone())
-                    .md(md.clone())
-                    .lg(lg.clone())
-                    .xl(xl.clone())
-                    .xxl(xxl.clone()),
-            )
-            .dark(
-                self.dark
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm.clone())
-                    .md(md.clone())
-                    .lg(lg.clone())
-                    .xl(xl.clone())
-                    .xxl(xxl.clone()),
-            )
-            .light(
-                self.light
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm.clone())
-                    .md(md.clone())
-                    .lg(lg.clone())
-                    .xl(xl.clone())
-                    .xxl(xxl.clone()),
-            )
-            .monokai(
-                self.monokai
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm.clone())
-                    .md(md.clone())
-                    .lg(lg.clone())
-                    .xl(xl.clone())
-                    .xxl(xxl.clone()),
-            )
-            .tokyo(
-                self.tokyo
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm.clone())
-                    .md(md.clone())
-                    .lg(lg.clone())
-                    .xl(xl.clone())
-                    .xxl(xxl.clone()),
-            )
-            .dracula(
-                self.dracula
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm.clone())
-                    .md(md.clone())
-                    .lg(lg.clone())
-                    .xl(xl.clone())
-                    .xxl(xxl.clone()),
-            )
-            .custom(
-                self.custom
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm.clone())
-                    .md(md.clone())
-                    .lg(lg.clone())
-                    .xl(xl.clone())
-                    .xxl(xxl.clone()),
-            )
-            .neko(
-                self.neko
-                    .padding(padding)
-                    .margin(margin)
-                    .px(px)
-                    .py(py)
-                    .width(width)
-                    .height(height)
-                    .pb(pb)
-                    .pl(pl)
-                    .pt(pt)
-                    .pr(pr)
-                    .mb(mb)
-                    .mt(mt)
-                    .mr(mr)
-                    .ml(ml)
-                    .sm(sm)
-                    .md(md)
-                    .lg(lg)
-                    .xl(xl)
-                    .xxl(xxl),
-            )
+            .carbon(apply_variant!(self, carbon, variant))
+            .dark(apply_variant!(self, dark, variant))
+            .light(apply_variant!(self, light, variant))
+            .monokai(apply_variant!(self, monokai, variant))
+            .tokyo(apply_variant!(self, tokyo, variant))
+            .dracula(apply_variant!(self, dracula, variant))
+            .custom(apply_variant!(self, custom, variant))
+            .neko(apply_variant!(self, neko, variant))
+            .rust(apply_variant!(self, rust, variant))
     }
     pub fn create(&self) -> Signal<String> {
         use_memo({
@@ -258,6 +120,7 @@ impl Class {
             let dracula = self.dracula.to_class();
             let custom = self.custom.to_class();
             let carbon = self.carbon.to_class();
+            let rust = self.rust.to_class();
             let neko = self.neko.to_class();
             move || {
                 let default_theme = |th: &String| -> String {
@@ -270,6 +133,7 @@ impl Class {
                 let theme = use_theme_context();
                 match theme.get() {
                     Theme::Neko => default_theme(&neko),
+                    Theme::Rust => default_theme(&rust),
                     Theme::Light => light.clone(),
                     Theme::Dark => default_theme(&dark),
                     Theme::Dracula => default_theme(&dracula),
@@ -286,6 +150,7 @@ impl Class {
 impl Theme {
     pub fn to_str(&self) -> &'static str {
         match self {
+            Self::Rust => "rust",
             Self::Neko => "neko",
             Self::Dark => "dark",
             Self::Light => "light",
@@ -299,6 +164,7 @@ impl Theme {
 
     pub fn from_str(s: &str) -> Self {
         match s {
+            "rust" => Self::Rust,
             "neko" => Self::Neko,
             "dark" => Self::Dark,
             "light" => Self::Light,
