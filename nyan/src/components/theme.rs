@@ -63,6 +63,7 @@ macro_rules! apply_variant {
             mt,
             mr,
             ml,
+            left,
             ref md,
             ref lg,
             ref sm,
@@ -92,6 +93,7 @@ macro_rules! apply_variant {
             .lg(lg.clone())
             .xl(xl.clone())
             .xxl(xxl.clone())
+            .left(left)
     }};
 }
 

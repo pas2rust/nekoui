@@ -70,22 +70,114 @@ fn Buttons() -> impl IntoView {
 #[component]
 fn App() -> impl IntoView {
     view! {
-         <AvatarContainer>
-            <AvatarImage src=Dir::PublicノAssetsノPas・jpg />
-            <AvatarDot />
-        </AvatarContainer>
-        <AvatarContainer>
-            <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
-            <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::xs()) />
-        </AvatarContainer>
-        <AvatarContainer>
-            <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
-            <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::xs()) />
-        </AvatarContainer>
-        <AvatarContainer>
-            <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
-            <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::xs()) />
-        </AvatarContainer>
+        <div class="flex">
+            <AvatarContainer>
+                <AvatarImage src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::xs()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::xs()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::xs()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::xs()) />
+            </AvatarContainer>
+        </div>
+        <div class="flex">
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::offline().apply(AvatarStyle::sm()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::offline().apply(AvatarDotStyle::sm()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::sm()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::sm()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::sm()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::sm()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::sm()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::sm()) />
+            </AvatarContainer>
+        </div>
+        <div class="flex">
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::offline().apply(AvatarStyle::md()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::offline().apply(AvatarDotStyle::md()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::md()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::md()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::md()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::md()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::md()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::md()) />
+            </AvatarContainer>
+        </div>
+         <div class="flex">
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::offline().apply(AvatarStyle::lg()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::offline().apply(AvatarDotStyle::lg()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::lg()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::lg()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::lg()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::lg()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::lg()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::lg()) />
+            </AvatarContainer>
+        </div>
+         <div class="flex">
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::offline().apply(AvatarStyle::xl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::offline().apply(AvatarDotStyle::xl()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::xl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::xl()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::xl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::xl()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::xl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::xl()) />
+            </AvatarContainer>
+        </div>
+         <div class="flex">
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::offline().apply(AvatarStyle::xxl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::offline().apply(AvatarDotStyle::xxl()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::online().apply(AvatarStyle::xxl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::online().apply(AvatarDotStyle::xxl()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::busy().apply(AvatarStyle::xxl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::busy().apply(AvatarDotStyle::xxl()) />
+            </AvatarContainer>
+            <AvatarContainer>
+                <AvatarImage class=AvatarStyle::absent().apply(AvatarStyle::xxl()) src=Dir::PublicノAssetsノPas・jpg />
+                <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::xxl()) />
+            </AvatarContainer>
+        </div>
         <ToggleContainer>
             <ToggleButton>
                 <ToggleThumb/>

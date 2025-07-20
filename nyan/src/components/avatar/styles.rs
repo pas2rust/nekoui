@@ -195,23 +195,23 @@ impl AvatarDotStyle {
     }
 
     pub fn sm() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(54.0))
+        Self::base().left(TwUnit::Px(50.0))
     }
 
     pub fn md() -> TailwindStyles {
-        Self::base().left(TwUnit::Sixteen)
+        Self::base().left(TwUnit::Px(60.0))
     }
 
     pub fn lg() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(75.0))
+        Self::base().left(TwUnit::Px(70.0))
     }
 
     pub fn xl() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(90.0))
+        Self::base().left(TwUnit::Px(85.0))
     }
 
     pub fn xxl() -> TailwindStyles {
-        Self::base().left(TwUnit::Px(105.0))
+        Self::base().left(TwUnit::Px(95.0))
     }
 }
 
