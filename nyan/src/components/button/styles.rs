@@ -124,6 +124,46 @@ impl ButtonStyle {
             )
     }
 
+     pub fn neon_rust() -> TailwindStyles {
+        Self::neon()
+            .bg_color(Color::Orange(Shade::SixHundred))
+            .shadow_color(Color::Orange(Shade::FiveHundred))
+            .ring_color(Color::Orange(Shade::FourHundred))
+            .focus(
+                TailwindStyles::new()
+                    .ring_size(TwUnit::Four)
+                    .ring_color(Color::Orange(Shade::ThreeHundred))
+                    .outline(Outline::None)
+                    .to_box(),
+            )
+            .hover(
+                TailwindStyles::new()
+                    .scale(TwUnit::OneHundredTenRaw)
+                    .bg_color(Color::Orange(Shade::SevenHundred))
+                    .to_box(),
+            )
+    }
+
+     pub fn neon_neko() -> TailwindStyles {
+        Self::neon()
+            .bg_color(Color::Indigo(Shade::SixHundred))
+            .shadow_color(Color::Indigo(Shade::FiveHundred))
+            .ring_color(Color::Indigo(Shade::FourHundred))
+            .focus(
+                TailwindStyles::new()
+                    .ring_size(TwUnit::Four)
+                    .ring_color(Color::Indigo(Shade::ThreeHundred))
+                    .outline(Outline::None)
+                    .to_box(),
+            )
+            .hover(
+                TailwindStyles::new()
+                    .scale(TwUnit::OneHundredTenRaw)
+                    .bg_color(Color::Indigo(Shade::SevenHundred))
+                    .to_box(),
+            )
+    }
+
     pub fn fill_light() -> TailwindStyles {
         Self::fill()
             .bg_color(Color::Gray(Shade::FourHundred))
@@ -227,6 +267,42 @@ impl ButtonStyle {
                 TailwindStyles::new()
                     .ring_size(TwUnit::Four)
                     .ring_color(Color::Purple(Shade::SevenHundred))
+                    .outline(Outline::None)
+                    .to_box(),
+            )
+    }
+
+    pub fn fill_neko() -> TailwindStyles {
+        Self::fill()
+            .bg_color(Color::Indigo(Shade::FiveHundred))
+            .hover(
+                TailwindStyles::new()
+                    .scale(TwUnit::OneHundredTenRaw)
+                    .bg_color(Color::Indigo(Shade::SevenHundred))
+                    .to_box(),
+            )
+            .focus(
+                TailwindStyles::new()
+                    .ring_size(TwUnit::Four)
+                    .ring_color(Color::Indigo(Shade::SevenHundred))
+                    .outline(Outline::None)
+                    .to_box(),
+            )
+    }
+
+    pub fn fill_rust() -> TailwindStyles {
+        Self::fill()
+            .bg_color(Color::Orange(Shade::FiveHundred))
+            .hover(
+                TailwindStyles::new()
+                    .scale(TwUnit::OneHundredTenRaw)
+                    .bg_color(Color::Orange(Shade::SevenHundred))
+                    .to_box(),
+            )
+            .focus(
+                TailwindStyles::new()
+                    .ring_size(TwUnit::Four)
+                    .ring_color(Color::Orange(Shade::SevenHundred))
                     .outline(Outline::None)
                     .to_box(),
             )
@@ -352,6 +428,46 @@ impl ButtonStyle {
             )
     }
 
+     pub fn outline_neko() -> TailwindStyles {
+        Self::outline()
+            .ring_color(Color::Indigo(Shade::FiveHundred))
+            .text_color(Color::Indigo(Shade::FourHundred))
+            .hover(
+                TailwindStyles::new()
+                    .scale(TwUnit::OneHundredTenRaw)
+                    .text_color(Color::Indigo(Shade::OneHundred))
+                    .bg_color(Color::Indigo(Shade::FiveHundred))
+                    .to_box(),
+            )
+            .focus(
+                TailwindStyles::new()
+                    .ring_size(TwUnit::Four)
+                    .ring_color(Color::Indigo(Shade::SevenHundred))
+                    .outline(Outline::None)
+                    .to_box(),
+            )
+    }
+
+     pub fn outline_rust() -> TailwindStyles {
+        Self::outline()
+            .ring_color(Color::Orange(Shade::FiveHundred))
+            .text_color(Color::Orange(Shade::FourHundred))
+            .hover(
+                TailwindStyles::new()
+                    .scale(TwUnit::OneHundredTenRaw)
+                    .text_color(Color::Orange(Shade::OneHundred))
+                    .bg_color(Color::Orange(Shade::FiveHundred))
+                    .to_box(),
+            )
+            .focus(
+                TailwindStyles::new()
+                    .ring_size(TwUnit::Four)
+                    .ring_color(Color::Orange(Shade::SevenHundred))
+                    .outline(Outline::None)
+                    .to_box(),
+            )
+    }
+
     pub fn gradient_light() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
             Color::Gray(Shade::FiveHundred),
@@ -370,17 +486,17 @@ impl ButtonStyle {
 
     pub fn gradient_monokai() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
-            Color::Pink(Shade::SixHundred),
+            Color::Fuchsia(Shade::FourHundred),
             Color::Fuchsia(Shade::FiveHundred),
-            Color::Red(Shade::FiveHundred),
+            Color::Fuchsia(Shade::SixHundred),
         ))
     }
 
     pub fn gradient_dracula() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
-            Color::Purple(Shade::FiveHundred),
             Color::Pink(Shade::FourHundred),
-            Color::Violet(Shade::SixHundred),
+            Color::Pink(Shade::FiveHundred),
+            Color::Pink(Shade::SixHundred),
         ))
     }
 
@@ -394,9 +510,25 @@ impl ButtonStyle {
 
     pub fn gradient_tokyo() -> TailwindStyles {
         Self::gradient().gradient_colors(GradientColors::new(
-            Color::Violet(Shade::FiveHundred),
+            Color::Purple(Shade::FourHundred),
             Color::Purple(Shade::FiveHundred),
-            Color::Fuchsia(Shade::FiveHundred),
+            Color::Purple(Shade::SixHundred),
+        ))
+    }
+
+    pub fn gradient_neko() -> TailwindStyles {
+        Self::gradient().gradient_colors(GradientColors::new(
+            Color::Indigo(Shade::FourHundred),
+            Color::Indigo(Shade::FiveHundred),
+            Color::Indigo(Shade::SixHundred),
+        ))
+    }
+
+    pub fn gradient_rust() -> TailwindStyles {
+        Self::gradient().gradient_colors(GradientColors::new(
+            Color::Orange(Shade::FourHundred),
+            Color::Orange(Shade::FiveHundred),
+            Color::Orange(Shade::SixHundred),
         ))
     }
 }
@@ -410,6 +542,8 @@ impl ButtonStyle {
             .dracula(Self::fill_dracula())
             .carbon(Self::fill_carbon())
             .tokyo(Self::fill_tokyo())
+            .rust(Self::fill_rust())
+            .neko(Self::fill_neko())
     }
 
     pub fn neko_outline() -> Class {
@@ -420,6 +554,8 @@ impl ButtonStyle {
             .dracula(Self::outline_dracula())
             .carbon(Self::outline_carbon())
             .tokyo(Self::outline_tokyo())
+            .rust(Self::outline_rust())
+            .neko(Self::outline_neko())
     }
 
     pub fn neko_gradient() -> Class {
@@ -430,6 +566,8 @@ impl ButtonStyle {
             .dracula(Self::gradient_dracula())
             .carbon(Self::gradient_carbon())
             .tokyo(Self::gradient_tokyo())
+            .rust(Self::gradient_rust())
+            .neko(Self::gradient_neko())
     }
 
     pub fn neko_neon() -> Class {
@@ -440,6 +578,8 @@ impl ButtonStyle {
             .dracula(Self::neon_dracula())
             .carbon(Self::neon_carbon())
             .tokyo(Self::neon_tokyo())
+            .rust(Self::neon_rust())
+            .neko(Self::neon_neko())
     }
 }
 
@@ -507,7 +647,6 @@ impl ButtonStyle {
                 Color::Fuchsia(Shade::FiveHundred),
                 Color::Pink(Shade::FiveHundred),
             ))
-            .hover(TailwindStyles::new().opacity(TwUnit::SeventyTwo).to_box())
     }
 
     pub fn xs() -> TailwindStyles {

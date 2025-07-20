@@ -10,6 +10,7 @@ impl ChartAreaStyle {
             .justify_content(JustifyContent::Center)
             .flex_wrap(FlexWrap::Wrap)
             .gap(TwUnit::Four)
+            .width(TwUnit::Px(300.0))
     }
 
     pub fn card() -> TailwindStyles {
@@ -18,19 +19,7 @@ impl ChartAreaStyle {
             .border_color(Color::Gray(Shade::ThreeHundred))
             .rounded(TwUnit::Lg)
             .shadow_size(TwUnit::Md)
-    }
-}
-
-impl ChartCanvasStyle {
-    pub fn normal() -> TailwindStyles {
-        TailwindStyles::new()
-            .width(TwUnit::Full)
-            .height(TwUnit::Px(500.0))
-    }
-
-    pub fn tall() -> TailwindStyles {
-        TailwindStyles::new()
-            .width(TwUnit::Full)
-            .height(TwUnit::Px(800.0))
+            .width(TwUnit::Px(300.0))
+            .margin(TwUnit::Four)
     }
 }

@@ -426,25 +426,25 @@ pub fn ChartArea() -> impl IntoView {
     view! {
         <div class=ChartAreaStyle::container().to_class()>
             <div class=ChartAreaStyle::card().to_class()>
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::BottomUp)) class=ChartCanvasStyle::normal().to_class() />
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::BottomUp))  />
             </div>
             <div class=ChartAreaStyle::card().to_class()>
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::TopDown)) class=ChartCanvasStyle::normal().to_class() />
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::TopDown))  />
             </div>
             <div class=ChartAreaStyle::card().to_class()>
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::LeftRight)) class=ChartCanvasStyle::normal().to_class() />
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::LeftRight))  />
             </div>
             <div class=ChartAreaStyle::card().to_class()>
-                <canvas node_ref=use_canvas(create_bar_chart(Direction::RightLeft)) class=ChartCanvasStyle::normal().to_class() />
+                <canvas node_ref=use_canvas(create_bar_chart(Direction::RightLeft))  />
             </div>
             <div class=ChartAreaStyle::card().to_class()>
-                <canvas node_ref=use_canvas(create_line_chart()) class=ChartCanvasStyle::normal().to_class() />
+                <canvas node_ref=use_canvas(create_line_chart())  />
             </div>
             <div class=ChartAreaStyle::card().to_class()>
-                <canvas node_ref=use_canvas(create_pie_chart()) class=ChartCanvasStyle::normal().to_class() />
+                <canvas node_ref=use_canvas(create_pie_chart())  />
             </div>
             <div class=ChartAreaStyle::card().to_class()>
-                <canvas node_ref=use_canvas(create_radial_chart()) class=ChartCanvasStyle::tall().to_class() />
+                <canvas node_ref=use_canvas(create_radial_chart()) />
             </div>
         </div>
     }

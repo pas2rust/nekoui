@@ -64,6 +64,7 @@ macro_rules! apply_variant {
             mr,
             ml,
             left,
+            top,
             ref md,
             ref lg,
             ref sm,
@@ -94,6 +95,7 @@ macro_rules! apply_variant {
             .xl(xl.clone())
             .xxl(xxl.clone())
             .left(left)
+            .top(top)
     }};
 }
 
