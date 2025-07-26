@@ -13,7 +13,7 @@ fn Buttons() -> impl IntoView {
             Theme::Dark => Theme::Neko,
             Theme::Neko => Theme::Rust,
             Theme::Rust => Theme::Light,
-            _ => Theme::Light
+            _ => Theme::Light,
         })
     };
     let theme = move || theme.get().to_str().to_uppercase();
@@ -22,6 +22,18 @@ fn Buttons() -> impl IntoView {
             on:click=click
         >
             {theme}
+        </Button>
+        <Button
+            class=ButtonStyle::neko_fill().apply(ButtonStyle::circle_xs())
+            on:click=click
+        >
+            <Icon src=Dir::PublicノAssetsノLucideノHeartCrack・svg/>
+        </Button>
+        <Button
+            class=ButtonStyle::neko_fill().apply(ButtonStyle::circle_sm())
+            on:click=click
+        >
+            <Icon src=Dir::PublicノAssetsノLucideノHeartCrack・svg/>
         </Button>
         <Button
             class=ButtonStyle::neko_fill().apply(ButtonStyle::lg())
@@ -38,6 +50,11 @@ fn Buttons() -> impl IntoView {
             on:click=click>
             {theme}
         </Button>
+        <ToggleContainer>
+            <ToggleButton>
+                 <ToggleThumb/>
+            </ToggleButton>
+        </ToggleContainer>
     }
 }
 
@@ -152,11 +169,20 @@ fn App() -> impl IntoView {
                 <AvatarDot class=AvatarDotStyle::absent().apply(AvatarDotStyle::xxl()) />
             </AvatarContainer>
         </div>
-        <ToggleContainer>
-            <ToggleButton>
-                <ToggleThumb/>
-            </ToggleButton>
-        </ToggleContainer>
+    }
+}
+
+#[component]
+fn Form() -> impl IntoView {
+    view! {
+        <FormContainer>
+            <FormInput name="username" placeholder="Type you user here!"/>
+            <FormInput
+                name="email"
+                placeholder="Type your email here!"
+                pattern=r"^[\w\.-]+@[\w\.-]+\.\w{2,}$"
+            />
+        </FormContainer>
     }
 }
 
@@ -164,6 +190,15 @@ fn main() {
     use_mount_to_body(|| {
         view! {
             <NekoProvider>
+                <LoadContainer>
+                    <Loading>
+                        Loading...
+                    </Loading>
+                    <Loaded>
+                        Loaded!
+                    </Loaded>
+                </LoadContainer>
+                <Form/>
                 <App/>
                 <Buttons/>
                 <ChartArea/>

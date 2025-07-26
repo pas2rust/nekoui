@@ -25,9 +25,8 @@ pub fn ToggleContainer(
 
 #[component]
 pub fn ToggleButton(
-    #[prop(optional, default = Class::new().light(ToggleStyle::md_unchecked()))]
-    class_unchecked: Class,
-    #[prop(optional, default = Class::new().light(ToggleStyle::md_checked()))] class_checked: Class,
+    #[prop(optional, default = ToggleStyle::unchecked())] class_unchecked: Class,
+    #[prop(optional, default = ToggleStyle::checked())] class_checked: Class,
     #[prop(optional)] children: Option<Children>,
 ) -> impl IntoView {
     let checked = use_context::<RwSignal<bool>>().expect("checked must be provided");
