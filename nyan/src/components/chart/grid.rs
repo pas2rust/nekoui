@@ -32,14 +32,12 @@ impl Drawable for GridOptions {
 
         let step = opts.size.max(1.0);
 
-        // Linhas horizontais
         for y in (0..=(h as usize)).step_by(step as usize) {
             let y = y as f64;
             ctx.move_to(0.0, y);
             ctx.line_to(w, y);
         }
 
-        // Linhas verticais
         for x in (0..=(w as usize)).step_by(step as usize) {
             let x = x as f64;
             ctx.move_to(x, 0.0);
@@ -47,6 +45,6 @@ impl Drawable for GridOptions {
         }
 
         ctx.stroke();
-        ctx.set_global_alpha(1.0); // Reset alpha
+        ctx.set_global_alpha(1.0);
     }
 }

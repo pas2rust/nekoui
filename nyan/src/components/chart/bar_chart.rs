@@ -48,14 +48,11 @@ impl Drawable for BarChart {
         let pad = &opts.padding;
         let bar_cfg = &opts.bar;
         opts.grid.draw(ctx, w, h);
-        // calcula valor máximo
         let max = self.data.iter().map(|d| d.value).fold(f64::NAN, f64::max);
         if max.is_nan() || max == 0.0 {
             return;
         }
-        // para cada ponto, desenha
         for (i, point) in self.data.iter().enumerate() {
-            // calcula posição conforme direção
             let (x, y, width, height, tx, ty) = match opts.direction {
                 Direction::BottomUp => {
                     let space = (w - 2.0 * pad.horizontal) / self.data.len() as f64;
@@ -90,13 +87,11 @@ impl Drawable for BarChart {
                     (x, y, width, thick, x, y)
                 }
             };
-            // aplica sombra
             let sh = &point.shadow;
             ctx.set_shadow_blur(sh.blur);
             ctx.set_shadow_color(&sh.color.to_hex());
             ctx.set_shadow_offset_x(sh.offset_x);
             ctx.set_shadow_offset_y(sh.offset_y);
-            // desenha barra
             ctx.set_global_alpha(bar_cfg.alpha);
             ctx.set_fill_style_str(&point.color.to_hex());
             if bar_cfg.border_radius > 0.0 {
@@ -112,7 +107,6 @@ impl Drawable for BarChart {
                 ctx.line_to(x, y + radius);
                 ctx.quadratic_curve_to(x, y, x + radius, y);
                 ctx.close_path();
-                // preenche e contorna
                 ctx.fill();
                 if bar_cfg.stroke_color != Color::Transparent {
                     ctx.set_stroke_style_str(&bar_cfg.stroke_color.to_hex());
@@ -127,7 +121,6 @@ impl Drawable for BarChart {
                 ctx.set_line_width(bar_cfg.line_width);
                 ctx.stroke_rect(x, y, width, height);
             }
-            // desenha texto
             let font_cfg = &point.font;
             ctx.set_font(&font_cfg.font);
             ctx.set_fill_style_str(&font_cfg.text_color.to_hex());

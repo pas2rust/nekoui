@@ -39,7 +39,7 @@ impl Drawable for LineChart {
         let pad = &opts.padding;
         let line_cfg = &opts.line;
         opts.grid.draw(ctx, w, h);
-        // calcula valor máximo
+
         let max_value = self
             .series
             .iter()
@@ -49,14 +49,12 @@ impl Drawable for LineChart {
         if max_value.is_nan() || max_value == 0.0 {
             return;
         }
-        // desenha cada série
+
         for series in &self.series {
             if series.len() < 2 {
                 continue;
             }
-            // calcula espaçamento entre pontos
             let spacing = (w - 2.0 * pad.horizontal) / (series.len() - 1) as f64;
-            // gera coordenadas
             let points: Vec<(f64, f64)> = series
                 .iter()
                 .enumerate()
@@ -66,7 +64,6 @@ impl Drawable for LineChart {
                     (x, y)
                 })
                 .collect();
-            // desenha linhas
             ctx.set_line_width(line_cfg.width);
             ctx.set_shadow_blur(0.0);
             for i in 0..points.len() - 1 {
@@ -78,16 +75,13 @@ impl Drawable for LineChart {
                 ctx.line_to(x2, y2);
                 ctx.stroke();
             }
-            // desenha pontos e rótulos
             for (i, point) in series.iter().enumerate() {
                 let (x, y) = points[i];
-                // ponto
                 ctx.set_fill_style_str(&point.color.to_hex());
                 ctx.begin_path();
                 ctx.arc(x, y, line_cfg.point_radius, 0.0, std::f64::consts::TAU)
                     .unwrap();
                 ctx.fill();
-                // rótulo
                 let font_cfg = &point.font;
                 ctx.set_font(&font_cfg.font);
                 ctx.set_fill_style_str(&font_cfg.text_color.to_hex());

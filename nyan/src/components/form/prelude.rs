@@ -1,2 +1,2 @@
 pub use super::form::*;
-pub use super::styles::*;
+pub use super::input::prelude::*;

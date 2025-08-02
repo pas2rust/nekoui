@@ -10,7 +10,6 @@ impl ChartAreaStyle {
             .justify_content(JustifyContent::Center)
             .flex_wrap(FlexWrap::Wrap)
             .gap(TwUnit::Four)
-            .width(TwUnit::Px(300.0))
     }
 
     pub fn card() -> TailwindStyles {
@@ -19,7 +18,13 @@ impl ChartAreaStyle {
             .border_color(Color::Gray(Shade::ThreeHundred))
             .rounded(TwUnit::Lg)
             .shadow_size(TwUnit::Md)
-            .width(TwUnit::Px(300.0))
-            .margin(TwUnit::Four)
+            .width(TwUnit::Px(400.0))
+            .height(TwUnit::Px(400.0))
+    }
+}
+
+impl BuildClass for ChartAreaStyle {
+    fn build() -> Vec<Box<dyn ToClass>> {
+        vec![Self::container().to_box(), Self::card().to_box()]
     }
 }

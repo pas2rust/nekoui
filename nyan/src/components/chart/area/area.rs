@@ -378,7 +378,7 @@ fn create_radial_chart() -> RadialChart {
                         .alpha(0.5)
                         .stroke_color(Color::White)
                         .show_percentage(true)
-                        .fill_area(true), // Adicionei fill_area para melhor visualização
+                        .fill_area(true),
                 )
                 .font(
                     FontOptions::new()

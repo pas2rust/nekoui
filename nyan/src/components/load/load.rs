@@ -1,6 +1,6 @@
-use std::time::Duration;
-use leptos::prelude::*;
 use crate::components::prelude::*;
+use leptos::prelude::*;
+use std::time::Duration;
 
 #[derive(Debug, PartialEq, Clone, Copy)]
 pub enum State {
@@ -16,14 +16,17 @@ pub fn LoadContainer(children: Children) -> impl IntoView {
     let state = use_rw_signal(State::Loading);
     use_provide_ctx(LoadState(state.read_only()));
 
-    use_set_timeout(move || {
-        state.set(State::Loaded);
-    }, Duration::new(2, 0));
+    use_set_timeout(
+        move || {
+            state.set(State::Loaded);
+        },
+        Duration::new(2, 0),
+    );
 
     view! {
-        <div class="load-container">
+        <>
             {children()}
-        </div>
+        </>
     }
 }
 
@@ -33,7 +36,7 @@ pub fn Loading(mut children: ChildrenFnMut) -> impl IntoView {
     view! {
         {move || {
             (state.get() == State::Loading)
-                .then(|| view! { <div class="text-yellow-500">{children()}</div> })
+                .then(|| view! { <>{children()}</> })
         }}
     }
 }
@@ -44,7 +47,7 @@ pub fn Loaded(mut children: ChildrenFnMut) -> impl IntoView {
     view! {
         {move || {
             (state.get() == State::Loaded)
-                .then(|| view! { <div class="text-green-500">{children()}</div> })
+                .then(|| view! { <>{children()}</> })
         }}
     }
 }

@@ -65,15 +65,11 @@ impl Drawable for PieChart {
 
         for point in &self.data {
             let slice_angle: f64 = (point.value / total) * std::f64::consts::TAU;
-
-            // sombra
             let sh = &point.shadow;
             ctx.set_shadow_blur(sh.blur);
             ctx.set_shadow_color(&sh.color.to_hex());
             ctx.set_shadow_offset_x(sh.offset_x);
             ctx.set_shadow_offset_y(sh.offset_y);
-
-            // preenchimento
             ctx.set_global_alpha(cfg.alpha);
             ctx.set_fill_style_str(&point.color.to_hex());
             ctx.begin_path();
@@ -104,14 +100,12 @@ impl Drawable for PieChart {
             ctx.close_path();
             ctx.fill();
 
-            // contorno, se houver
             if cfg.stroke_color != Color::Transparent && cfg.line_width > 0.0 {
                 ctx.set_stroke_style_str(&cfg.stroke_color.to_hex());
                 ctx.set_line_width(cfg.line_width);
                 ctx.stroke();
             }
-
-            // rótulo
+            
             let mid = start_angle + slice_angle / 2.0;
             let label_r = if cfg.is_doughnut {
                 radius * (1.0 + cfg.doughnut_ratio.clamp(0.0, 1.0)) / 2.0

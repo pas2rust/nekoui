@@ -55,6 +55,17 @@ fn Buttons() -> impl IntoView {
                  <ToggleThumb/>
             </ToggleButton>
         </ToggleContainer>
+        <ToggleContainer>
+            <ToggleButton
+                 class_unchecked=ToggleButtonStyle::unchecked().apply(ToggleButtonStyle::md_unchecked())
+                 class_checked=ToggleButtonStyle::checked().apply(ToggleButtonStyle::md_checked())
+            >
+                 <ToggleThumb
+                    class_unchecked=Class::new().light(ToggleThumbStyle::md_unchecked())
+                    class_checked=Class::new().light(ToggleThumbStyle::md_checked())
+                />
+            </ToggleButton>
+        </ToggleContainer>
     }
 }
 
@@ -176,11 +187,11 @@ fn App() -> impl IntoView {
 fn Form() -> impl IntoView {
     view! {
         <FormContainer>
-            <FormInput name="username" placeholder="Type you user here!"/>
-            <FormInput
+            <FormInputText name="username" placeholder="Type you user here!"/>
+            <FormInputText
                 name="email"
                 placeholder="Type your email here!"
-                pattern=r"^[\w\.-]+@[\w\.-]+\.\w{2,}$"
+                pattern=r"^[\w\.-]+@[\w\.-]+\.\w{3,}$"
             />
         </FormContainer>
     }

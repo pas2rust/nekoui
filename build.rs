@@ -30,7 +30,8 @@ fn main() {
         let styles = ButtonStyle::build()
             .into_iter()
             .chain(AvatarStyle::build())
-            .chain(ToggleStyle::build());
+            .chain(ToggleButtonStyle::build())
+            .chain(ChartAreaStyle::build());
 
         let mut class_set = HashSet::new();
         for style in styles {
