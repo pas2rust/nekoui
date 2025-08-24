@@ -5,9 +5,9 @@ use leptos::prelude::*;
 pub enum Valid {
     Success,
     Error,
-    None,
+    Default,
 }
-pub type FormValid = RwSignal<Valid>;
+pub type InputValid = RwSignal<Valid>;
 
 #[component]
 pub fn FormInputContainer(
@@ -15,8 +15,8 @@ pub fn FormInputContainer(
     #[prop(optional, default = FormInputContainerStyle::class())] 
     class: Class
 ) -> impl IntoView {
-    let is_valid = use_rw_signal(Valid::None);
-    use_provide_ctx::<FormValid>(is_valid);
+    let is_valid = use_rw_signal(Valid::Default);
+    use_provide_ctx::<InputValid>(is_valid);
     view! {
         <div class=class.create()>
             {children()}

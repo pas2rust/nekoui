@@ -16,8 +16,8 @@ pub fn FormInputText(
     let form = use_ctx::<FormData>().expect("Form context not found");
     let local_value = use_rw_signal(String::new());
     let regex = pattern.map(|pat| Regex::new(pat).expect("Invalid regex"));
-    let form_valid = use_ctx::<FormValid>().expect("Form valid must be provided!");
-    
+    let input_valid = use_input_valid_ctx();
+
     let on_input = move |ev| {
         let value = event_target_value(&ev);
         local_value.set(value.clone());
@@ -33,18 +33,16 @@ pub fn FormInputText(
         };
 
         if !value.is_empty() {
-            form_valid.set(valid);
+            input_valid.set(valid);
         } else {
-            form_valid.set(Valid::None)
+            input_valid.set(Valid::Default)
         }
 
-        if valid == Valid::Success {
-            form.update(|map| {
-                map.insert(name.to_string(), value);
-            });
-            if debug {
-                log!("{:#?}", form.get());
-            }
+        form.update(|map| {
+            map.insert(name.to_string(), value);
+        });
+        if debug {
+            log!("{:#?}", form.get());
         }
     };
 

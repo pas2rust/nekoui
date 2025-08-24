@@ -182,24 +182,34 @@ fn App() -> impl IntoView {
         </div>
     }
 }
-
 #[component]
 fn Form() -> impl IntoView {
     view! {
         <FormContainer>
             <FormInputContainer>
                 <FormInputLabel>
-                     User:
+                    User:
                 </FormInputLabel>
                 <FormInputText 
                     name="username" 
-                    placeholder="Type you user here!" 
+                    placeholder="Type your user here!" 
                     debug=true
                 />
+                <FormInputMessageContainer>
+                    <FormInputMessageSuccess>
+                        User looks good!
+                    </FormInputMessageSuccess>
+                    <FormInputMessageError>
+                        Invalid user!
+                    </FormInputMessageError>
+                    <FormInputMessageDefault>
+                        Please type your username.
+                    </FormInputMessageDefault>
+                </FormInputMessageContainer>
             </FormInputContainer>
             <FormInputContainer>
                 <FormInputLabel>
-                     Email:
+                    Email:
                 </FormInputLabel>
                 <FormInputText
                     name="email"
@@ -207,13 +217,22 @@ fn Form() -> impl IntoView {
                     pattern=r"^[\w\.-]+@[\w\.-]+\.\w{3,}$"
                     debug=true
                 />
-                <FormInputMessage>
-                    Error
-                </FormInputMessage>
+                <FormInputMessageContainer>
+                    <FormInputMessageSuccess>
+                        Email is valid!
+                    </FormInputMessageSuccess>
+                    <FormInputMessageError>
+                        Invalid email format.
+                    </FormInputMessageError>
+                    <FormInputMessageDefault>
+                        Please type your email.
+                    </FormInputMessageDefault>
+                </FormInputMessageContainer>
             </FormInputContainer>
         </FormContainer>
     }
 }
+
 
 fn main() {
     use_mount_to_body(|| {
