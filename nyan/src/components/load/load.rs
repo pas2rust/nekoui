@@ -31,23 +31,23 @@ pub fn LoadContainer(children: Children) -> impl IntoView {
 }
 
 #[component]
-pub fn Loading(mut children: ChildrenFnMut) -> impl IntoView {
+pub fn Loading(children: ChildrenFn) -> impl IntoView {
     let LoadState(state) = use_ctx::<LoadState>().expect("Load state context must be provided");
+
     view! {
-        {move || {
-            (state.get() == State::Loading)
-                .then(|| view! { <>{children()}</> })
-        }}
+        <Show when=move || state.get() == State::Loading>
+            {children()}
+        </Show>
     }
 }
 
 #[component]
-pub fn Loaded(mut children: ChildrenFnMut) -> impl IntoView {
+pub fn Loaded(children: ChildrenFn) -> impl IntoView {
     let LoadState(state) = use_ctx::<LoadState>().expect("Load state context must be provided");
+
     view! {
-        {move || {
-            (state.get() == State::Loaded)
-                .then(|| view! { <>{children()}</> })
-        }}
+        <Show when=move || state.get() == State::Loaded>
+            {children()}
+        </Show>
     }
 }
