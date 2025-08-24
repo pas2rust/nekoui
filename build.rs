@@ -31,7 +31,8 @@ fn main() {
             .into_iter()
             .chain(AvatarStyle::build())
             .chain(ToggleButtonStyle::build())
-            .chain(ChartAreaStyle::build());
+            .chain(ChartAreaStyle::build())
+            .chain(FormInputLabelStyle::build());
 
         let mut class_set = HashSet::new();
         for style in styles {

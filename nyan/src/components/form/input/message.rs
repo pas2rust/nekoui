@@ -6,19 +6,10 @@ pub fn FormInputMessage(
     children: Children,
     #[prop(optional, default = Class::new())] class: Class,
     #[prop(optional, default = Class::new())] class_success: Class,
-    #[prop(optional, default = Class::new())] class_erroror: Class,
+    #[prop(optional, default = Class::new())] class_error: Class,
 ) -> impl IntoView {
-    let form_valid = use_ctx::<FormValid>().expect("Form valid must be provided!");
-    let class = move || {
-        match form_valid.get() {
-            Valid::None => class.create(),
-            Valid::Success => class_success.create(),
-            Valid::Error => class_erroror.create(),
-        }
-        .get()
-    };
     view! {
-        <p class=class>
+        <p class=use_valid_class(class, class_success, class_error)>
             <span class="font-medium">Oh, snapp!</span> {children()}
         </p>
     }

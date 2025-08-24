@@ -10,22 +10,14 @@ pub fn FormInputText(
     #[prop(optional)] pattern: Option<&'static str>,
     #[prop(optional, default = Class::new())] class: Class,
     #[prop(optional, default = Class::new())] class_success: Class,
-    #[prop(optional, default = Class::new())] class_erroror: Class,
+    #[prop(optional, default = Class::new())] class_error: Class,
     #[prop(optional, default = false)] debug: bool,
 ) -> impl IntoView {
     let form = use_ctx::<FormData>().expect("Form context not found");
     let local_value = use_rw_signal(String::new());
     let regex = pattern.map(|pat| Regex::new(pat).expect("Invalid regex"));
     let form_valid = use_ctx::<FormValid>().expect("Form valid must be provided!");
-    let class = move || {
-        match form_valid.get() {
-            Valid::None => class.create(),
-            Valid::Success => class_success.create(),
-            Valid::Error => class_erroror.create(),
-        }
-        .get()
-    };
-
+    
     let on_input = move |ev| {
         let value = event_target_value(&ev);
         local_value.set(value.clone());
@@ -61,7 +53,7 @@ pub fn FormInputText(
             name=name
             id=name
             placeholder=placeholder
-            class=class
+            class=use_valid_class(class, class_success, class_error)
             prop:value=local_value
             on:input=on_input
         />

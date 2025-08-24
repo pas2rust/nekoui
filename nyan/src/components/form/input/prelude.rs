@@ -3,3 +3,5 @@ pub use super::upload::*;
 pub use super::container::*;
 pub use super::label::*;
 pub use super::message::*;
+pub use super::card::*;
+pub use super::use_valid_class::*;

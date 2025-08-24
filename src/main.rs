@@ -187,12 +187,30 @@ fn App() -> impl IntoView {
 fn Form() -> impl IntoView {
     view! {
         <FormContainer>
-            <FormInputText name="username" placeholder="Type you user here!"/>
-            <FormInputText
-                name="email"
-                placeholder="Type your email here!"
-                pattern=r"^[\w\.-]+@[\w\.-]+\.\w{3,}$"
-            />
+            <FormInputContainer>
+                <FormInputLabel>
+                     User:
+                </FormInputLabel>
+                <FormInputText 
+                    name="username" 
+                    placeholder="Type you user here!" 
+                    debug=true
+                />
+            </FormInputContainer>
+            <FormInputContainer>
+                <FormInputLabel>
+                     Email:
+                </FormInputLabel>
+                <FormInputText
+                    name="email"
+                    placeholder="Type your email here!"
+                    pattern=r"^[\w\.-]+@[\w\.-]+\.\w{3,}$"
+                    debug=true
+                />
+                <FormInputMessage>
+                    Error
+                </FormInputMessage>
+            </FormInputContainer>
         </FormContainer>
     }
 }

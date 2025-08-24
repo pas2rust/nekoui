@@ -5,21 +5,12 @@ use leptos::prelude::*;
 #[component]
 pub fn FormInputLabel(
     children: Children,
-    #[prop(optional, default = Class::new())] class: Class,
-    #[prop(optional, default = Class::new())] class_success: Class,
-    #[prop(optional, default = Class::new())] class_erroror: Class,
+    #[prop(optional, default = FormInputLabelStyle::class())] class: Class,
+    #[prop(optional, default = FormInputLabelStyle::class_success())] class_success: Class,
+    #[prop(optional, default = FormInputLabelStyle::class_error())] class_error: Class,
 ) -> impl IntoView {
-    let form_valid = use_ctx::<FormValid>().expect("Form valid must be provided!");
-    let class = move || {
-        match form_valid.get() {
-            Valid::None => class.create(),
-            Valid::Success => class_success.create(),
-            Valid::Error => class_erroror.create(),
-        }
-        .get()
-    };
     view! {
-        <label for="" class=class>
+        <label class=use_valid_class(class, class_success, class_error)>
             {children()}
         </label>
     }
