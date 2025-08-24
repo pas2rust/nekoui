@@ -194,18 +194,16 @@ fn Form() -> impl IntoView {
                     name="username" 
                     placeholder="Type your user here!" 
                     debug=true
-                />
-                <FormInputMessageContainer>
-                    <FormInputMessageSuccess>
-                        User looks good!
-                    </FormInputMessageSuccess>
-                    <FormInputMessageError>
-                        Invalid user!
-                    </FormInputMessageError>
-                    <FormInputMessageDefault>
-                        Please type your username.
-                    </FormInputMessageDefault>
-                </FormInputMessageContainer>
+                /> 
+                <FormInputMessageSuccess>
+                    User looks good!
+                </FormInputMessageSuccess>
+                <FormInputMessageError>
+                    Invalid user!
+                </FormInputMessageError>
+                <FormInputMessageDefault>
+                    Please type your username.
+                </FormInputMessageDefault>
             </FormInputContainer>
             <FormInputContainer>
                 <FormInputLabel>
@@ -217,17 +215,15 @@ fn Form() -> impl IntoView {
                     pattern=r"^[\w\.-]+@[\w\.-]+\.\w{3,}$"
                     debug=true
                 />
-                <FormInputMessageContainer>
-                    <FormInputMessageSuccess>
-                        Email is valid!
-                    </FormInputMessageSuccess>
-                    <FormInputMessageError>
-                        Invalid email format.
-                    </FormInputMessageError>
-                    <FormInputMessageDefault>
-                        Please type your email.
-                    </FormInputMessageDefault>
-                </FormInputMessageContainer>
+                <FormInputMessageSuccess>
+                    Email is valid!
+                </FormInputMessageSuccess>
+                <FormInputMessageError>
+                    Invalid email format.
+                </FormInputMessageError>
+                <FormInputMessageDefault>
+                    Please type your email.
+                </FormInputMessageDefault>
             </FormInputContainer>
         </FormContainer>
     }

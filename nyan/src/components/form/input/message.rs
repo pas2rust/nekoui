@@ -2,46 +2,46 @@ use crate::components::prelude::*;
 use leptos::prelude::*;
 
 #[component]
-pub fn FormInputMessageContainer(
+pub fn FormInputMessageSuccess(
     #[prop(optional, default = Class::new())] class: Class,
-    #[prop(optional, default = Class::new())] class_success: Class,
-    #[prop(optional, default = Class::new())] class_error: Class,
-    children: Children,
+    children: ChildrenFn,
 ) -> impl IntoView {
+    let valid = use_input_valid_ctx();
     view! {
-        <p class=use_valid_class(class, class_success, class_error)>
-            {children()}
+        <p class=class.create()>
+            <Show when=move || valid.get() == Valid::Success>
+                {children()}
+            </Show>
         </p>
     }
 }
 
 #[component]
-pub fn FormInputMessageSuccess(children: ChildrenFn) -> impl IntoView {
+pub fn FormInputMessageError(
+    #[prop(optional, default = Class::new())] class: Class,
+    children: ChildrenFn,
+) -> impl IntoView {
     let valid = use_input_valid_ctx();
     view! {
-        <Show when=move || valid.get() == Valid::Success>
-            {children()}
-        </Show>
-    }
-}
-
-
-#[component]
-pub fn FormInputMessageError(children: ChildrenFn) -> impl IntoView {
-    let valid = use_input_valid_ctx();
-    view! {
-        <Show when=move || valid.get() == Valid::Error>
-            {children()}
-        </Show>
+        <p class=class.create()>
+            <Show when=move || valid.get() == Valid::Error>
+                {children()}
+            </Show>
+        </p>
     }
 }
 
 #[component]
-pub fn FormInputMessageDefault(children: ChildrenFn) -> impl IntoView {
+pub fn FormInputMessageDefault(
+    #[prop(optional, default = Class::new())] class: Class,
+    children: ChildrenFn,
+) -> impl IntoView {
     let valid = use_input_valid_ctx();
     view! {
-        <Show when=move || valid.get() == Valid::Default>
-            {children()}
-        </Show>
+        <p class=class.create()>
+            <Show when=move || valid.get() == Valid::Default>
+                {children()}
+            </Show>
+        </p>
     }
 }
