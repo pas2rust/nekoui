@@ -185,7 +185,7 @@ fn App() -> impl IntoView {
 #[component]
 fn Form() -> impl IntoView {
     view! {
-        <FormContainer>
+        <FormContainer debug=true>
             <FormInputContainer>
                 <FormInputLabel>
                     User:
@@ -193,7 +193,6 @@ fn Form() -> impl IntoView {
                 <FormInputText 
                     name="username" 
                     placeholder="Type your user here!" 
-                    debug=true
                 /> 
                 <FormInputMessageSuccess>
                     User looks good!
@@ -213,7 +212,6 @@ fn Form() -> impl IntoView {
                     name="email"
                     placeholder="Type your email here!"
                     pattern=r"^[\w\.-]+@[\w\.-]+\.\w{3,}$"
-                    debug=true
                 />
                 <FormInputMessageSuccess>
                     Email is valid!

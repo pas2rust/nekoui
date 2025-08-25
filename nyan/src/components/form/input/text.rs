@@ -11,9 +11,9 @@ pub fn FormInputText(
     #[prop(optional, default = Class::new())] class: Class,
     #[prop(optional, default = Class::new())] class_success: Class,
     #[prop(optional, default = Class::new())] class_error: Class,
-    #[prop(optional, default = false)] debug: bool,
 ) -> impl IntoView {
     let form = use_ctx::<FormData>().expect("Form context not found");
+    let debug = use_ctx::<RwSignal<bool>>().expect("debug context value must be provided");
     let local_value = use_rw_signal(String::new());
     let regex = pattern.map(|pat| Regex::new(pat).expect("Invalid regex"));
     let input_valid = use_input_valid_ctx();
@@ -41,7 +41,7 @@ pub fn FormInputText(
         form.update(|map| {
             map.insert(name.to_string(), value);
         });
-        if debug {
+        if debug.get() {
             log!("{:#?}", form.get());
         }
     };
