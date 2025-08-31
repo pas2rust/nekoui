@@ -223,6 +223,18 @@ fn Form() -> impl IntoView {
                     Please type your email.
                 </FormInputMessageDefault>
             </FormInputContainer>
+            <FormInputContainer>
+                <FormInputUpload>
+                    <FormInputUploadTrigger>
+                        <Button
+                            class=ButtonStyle::neko_gradient()
+                        >
+                            Upload
+                        </Button>
+                    </FormInputUploadTrigger>
+                    <FormInputUploadList />
+                </FormInputUpload>
+            </FormInputContainer>
         </FormContainer>
     }
 }
