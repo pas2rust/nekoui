@@ -4,12 +4,10 @@ use std::collections::HashMap;
 
 pub type FormData = RwSignal<HashMap<String, String>>;
 
-
 #[component]
 pub fn FormContainer(
     children: Children,
-    #[prop(optional, default = false)] 
-    debug: bool,
+    #[prop(optional, default = false)] debug: bool,
     #[prop(optional, default = Class::new())] class: Class,
 ) -> impl IntoView {
     let form = use_rw_signal::<HashMap<String, String>>(HashMap::new());

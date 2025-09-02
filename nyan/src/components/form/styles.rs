@@ -5,11 +5,11 @@ pub struct FormInputLabelStyle;
 pub struct FormInputTextStyle;
 pub struct FormInputMessageStyle;
 pub struct FormInputCardStyle;
+pub struct FormInputUploadStyle;
 
 impl FormInputCardStyle {
     pub fn class() -> Class {
-        Class::new()
-            .light(Self::new())
+        Class::new().light(Self::new())
     }
     pub fn new() -> TailwindStyles {
         TailwindStyles::new()
@@ -19,11 +19,9 @@ impl FormInputCardStyle {
     }
 }
 
-
 impl FormInputContainerStyle {
     pub fn class() -> Class {
-        Class::new()
-            .light(Self::new())
+        Class::new().light(Self::new())
     }
     pub fn new() -> TailwindStyles {
         TailwindStyles::new()
@@ -34,23 +32,20 @@ impl FormInputContainerStyle {
 
 impl FormInputLabelStyle {
     pub fn new() -> TailwindStyles {
-         TailwindStyles::new()
+        TailwindStyles::new()
             .display(Display::Flex)
             .text_size(TwUnit::Sm)
             .font_weight(FontWeight::Medium)
             .text_color(Color::White)
     }
     pub fn class() -> Class {
-          Class::new()
-            .light(Self::new())
+        Class::new().light(Self::new())
     }
     pub fn class_success() -> Class {
-         Class::new()
-            .light(Self::new().text_color(Color::Green(Shade::FiveHundred)))
+        Class::new().light(Self::new().text_color(Color::Green(Shade::FiveHundred)))
     }
     pub fn class_error() -> Class {
-         Class::new()
-            .light(Self::new().text_color(Color::Red(Shade::FiveHundred)))
+        Class::new().light(Self::new().text_color(Color::Red(Shade::FiveHundred)))
     }
 }
 
@@ -63,13 +58,25 @@ impl FormInputTextStyle {
     }
 }
 
+impl FormInputUploadStyle {
+    pub fn class() -> Class {
+        Class::new().light(Self::new())
+    }
+    pub fn new() -> TailwindStyles {
+        TailwindStyles::new()
+            .display(Display::Flex)
+            .flex_wrap(FlexWrap::Wrap)
+    }
+}
+
 impl BuildClass for FormInputLabelStyle {
     fn build() -> Vec<Box<dyn ToClass>> {
         vec![
+            FormInputTextStyle::new().to_box(),
             FormInputLabelStyle::new().to_box(),
             FormInputLabelStyle::class().to_box(),
             FormInputLabelStyle::class_success().to_box(),
-            FormInputLabelStyle::class_error().to_box()
+            FormInputLabelStyle::class_error().to_box(),
         ]
     }
 }

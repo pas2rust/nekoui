@@ -38,7 +38,7 @@ pub enum Kind {
 }
 
 impl Kind {
-     pub fn from_mime(mime: &str) -> Self {
+    pub fn from_mime(mime: &str) -> Self {
         match mime {
             "application/pdf" => Kind::PDF,
             "application/msword" => Kind::DOC,
@@ -46,7 +46,9 @@ impl Kind {
             "application/vnd.ms-excel" => Kind::XLS,
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" => Kind::XLSX,
             "application/vnd.ms-powerpoint" => Kind::PPT,
-            "application/vnd.openxmlformats-officedocument.presentationml.presentation" => Kind::PPTX,
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation" => {
+                Kind::PPTX
+            }
             "text/plain" => Kind::TXT,
             "text/csv" => Kind::CSV,
             "image/jpeg" => Kind::JPG,
@@ -81,7 +83,9 @@ impl Kind {
             Kind::XLS => "application/vnd.ms-excel",
             Kind::XLSX => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             Kind::PPT => "application/vnd.ms-powerpoint",
-            Kind::PPTX => "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+            Kind::PPTX => {
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            }
             Kind::TXT => "text/plain",
             Kind::CSV => "text/csv",
             Kind::JPG | Kind::JPEG => "image/jpeg",
@@ -108,21 +112,18 @@ impl Kind {
     }
 }
 
-
 #[derive(Clone, Debug)]
 struct FileInfo {
     name: String,
     size: f64,
     url: Option<String>,
-    kind: Kind
+    kind: Kind,
 }
-
 
 #[component]
 pub fn FormInputUpload(
-    #[prop(optional, default = Class::new())] 
-    class: Class,
-    children: Children
+    #[prop(optional, default = FormInputUploadStyle::class())] class: Class,
+    children: Children,
 ) -> impl IntoView {
     use_provide_ctx::<RwSignal<Vec<FileInfo>>>(use_rw_signal(Vec::new()));
     view! {
@@ -134,11 +135,10 @@ pub fn FormInputUpload(
 
 #[component]
 pub fn FormInputUploadList(
-    #[prop(optional, default = FormInputContainerStyle::class())] 
-    class: Class,
+    #[prop(optional, default =  FormInputUploadStyle::class())] class: Class,
+    #[prop(optional, default = false)] preview: bool
 ) -> impl IntoView {
     let files = use_ctx::<RwSignal<Vec<FileInfo>>>().expect("Files must be provided");
-
     view! {
         <ul class=class.create()>
             <For
@@ -148,13 +148,14 @@ pub fn FormInputUploadList(
             >
                <li>{f.name.clone()}</li>
                <li>{f.size}</li>
-               {match f.kind {
-                    Kind::JPG | Kind::JPEG | Kind::PNG | Kind::APNG | Kind::WEBP 
+               {if preview { 
+                    match f.kind {
+                    Kind::JPG | Kind::JPEG | Kind::PNG | Kind::APNG | Kind::WEBP
                     | Kind::GIF | Kind::BMP | Kind::TIFF | Kind::SVG => view! {
                         <img
+                            class="w-1/2 h-1/2"
                             src=f.url.unwrap_or_default()
                             alt=f.name
-                            style="max-width: 200px; max-height: 200px;"
                         />
                     }.into_any(),
                     Kind::MP4 | Kind::WEBM | Kind::OGG | Kind::MKV | Kind::AVI => view! {
@@ -167,7 +168,10 @@ pub fn FormInputUploadList(
                         </video>
                     }.into_any(),
                     _ => view! {}.into_any()
-               }}
+               }} else {
+                    view!{}.into_any()
+               }
+            }
              </For>
         </ul>
     }
@@ -175,15 +179,13 @@ pub fn FormInputUploadList(
 
 #[component]
 pub fn FormInputUploadTrigger(
-     #[prop(optional, default = FormInputContainerStyle::class())] 
-    class: Class,
     #[prop(optional, default = true)] multiple: bool,
     #[prop(optional, default = Kind::All)] kind: Kind,
-    children: Children
+    children: Children,
 ) -> impl IntoView {
-   let files = use_ctx::<RwSignal<Vec<FileInfo>>>().expect("Files must be provided");
-   let valid = use_input_valid_ctx();
-   let input_ref = use_node_ref::<html::Input>();
+    let files = use_ctx::<RwSignal<Vec<FileInfo>>>().expect("Files must be provided");
+    let valid = use_input_valid_ctx();
+    let input_ref = use_node_ref::<html::Input>();
 
     let on_change = move |ev: web_sys::Event| {
         let input: web_sys::HtmlInputElement = event_target(&ev);
@@ -205,7 +207,7 @@ pub fn FormInputUploadTrigger(
                         name: file.name(),
                         size: file.size(),
                         url,
-                        kind: detected_kind
+                        kind: detected_kind,
                     });
                 }
             }
@@ -216,9 +218,8 @@ pub fn FormInputUploadTrigger(
         }
     };
 
-
     view! {
-        <label class="cursor-pointer" on:click=move |_| {
+        <label on:click=move |_| {
             input_ref.get().unwrap().click();
         }>
             {children()}

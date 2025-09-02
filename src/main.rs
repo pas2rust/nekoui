@@ -1,3 +1,4 @@
+use leptos::tachys::html::class::class;
 use nekoui::nyan::prelude::*;
 
 #[component]
@@ -190,10 +191,10 @@ fn Form() -> impl IntoView {
                 <FormInputLabel>
                     User:
                 </FormInputLabel>
-                <FormInputText 
-                    name="username" 
-                    placeholder="Type your user here!" 
-                /> 
+                <FormInputText
+                    name="username"
+                    placeholder="Type your user here!"
+                />
                 <FormInputMessageSuccess>
                     User looks good!
                 </FormInputMessageSuccess>
@@ -238,7 +239,6 @@ fn Form() -> impl IntoView {
         </FormContainer>
     }
 }
-
 
 fn main() {
     use_mount_to_body(|| {

@@ -4,8 +4,7 @@ use leptos::prelude::*;
 #[component]
 pub fn FormInputDropdownMenu(
     children: Children,
-    #[prop(optional, default = FormInputContainerStyle::class())] 
-    class: Class
+    #[prop(optional, default = FormInputContainerStyle::class())] class: Class,
 ) -> impl IntoView {
     view! {
         <div class=class.create()>
@@ -17,8 +16,7 @@ pub fn FormInputDropdownMenu(
 #[component]
 pub fn FormInputDropdownDivide(
     children: Children,
-    #[prop(optional, default = FormInputContainerStyle::class())] 
-    class: Class
+    #[prop(optional, default = FormInputContainerStyle::class())] class: Class,
 ) -> impl IntoView {
     view! {
         <div class=class.create()>
@@ -27,12 +25,10 @@ pub fn FormInputDropdownDivide(
     }
 }
 
-
 #[component]
 pub fn FormInputDropdownItem(
     children: Children,
-    #[prop(optional, default = FormInputContainerStyle::class())] 
-    class: Class
+    #[prop(optional, default = FormInputContainerStyle::class())] class: Class,
 ) -> impl IntoView {
     view! {
         <div class=class.create()>

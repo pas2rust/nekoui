@@ -1,7 +1,6 @@
 use crate::components::prelude::*;
 use leptos::prelude::*;
 
-
 #[component]
 pub fn FormInputLabel(
     children: Children,

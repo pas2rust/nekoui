@@ -12,8 +12,7 @@ pub type InputValid = RwSignal<Valid>;
 #[component]
 pub fn FormInputContainer(
     children: Children,
-    #[prop(optional, default = FormInputContainerStyle::class())] 
-    class: Class
+    #[prop(optional, default = FormInputContainerStyle::class())] class: Class,
 ) -> impl IntoView {
     let is_valid = use_rw_signal(Valid::Default);
     use_provide_ctx::<InputValid>(is_valid);
