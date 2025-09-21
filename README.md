@@ -1,0 +1,10 @@
+# nekoui
+[![Crates.io](https://img.shields.io/crates/v/nekoui.svg)](https://crates.io/crates/nekoui)
+[![Docs.rs](https://docs.rs/nekoui/badge.svg)](https://docs.rs/nekoui)
+[![License](https://img.shields.io/crates/l/nekoui.svg)](https://github.com/pas2rust/nekoui/blob/main/LICENSE)
+![GitHub top language](https://img.shields.io/github/languages/top/pas2rust/nekoui?color=orange&logo=rust&style=flat&logoColor=white)
+![GitHub stars](https://img.shields.io/github/stars/pas2rust/nekoui?color=success&style=flat&logo=github)
+![GitHub forks](https://img.shields.io/github/forks/pas2rust/nekoui?color=orange&logo=Furry%20Network%20Network&style=flat&logoColor=white)
+![Tests](https://raw.githubusercontent.com/pas2rust/badges/main/nekoui-tests.svg)
+![Crates.io downloads](https://img.shields.io/crates/d/nekoui.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/pas2rust/nekoui?color=ff69b4&label=update&logo=git&style=flat&logoColor=white)
