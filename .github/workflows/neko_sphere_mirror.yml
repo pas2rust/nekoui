@@ -1,0 +1,21 @@
+name: Mirror Repo to NekoSphere Organization
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    environment: nekospherefoundation
+
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v4
+
+      - name: Push to Mirror
+        run: |
+          git remote add mirror https://${{ secrets.PAT_NEKOSPHERE }}@github.com/NekoSphere/nekoui.git
+          git push --mirror mirror
