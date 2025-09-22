@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Source Repository
         uses: actions/checkout@v4
 
-      - name: Push to Mirror
+     - name: Push to Mirror
         run: |
-          git remote add mirror https://${{ secrets.PAT_NEKOSPHERE }}@github.com/NekoSphere/nekoui.git
-          git push --mirror mirror
+          git remote add mirror https://github.com/NekoSphere/nekoui.git
+          git -c "http.extraheader=AUTHORIZATION: Basic $(echo -n x-oauth-basic:${{ secrets.PAT_NEKOSPHERE }} | base64)" push mirror --mirror
