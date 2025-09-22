@@ -17,6 +17,9 @@ jobs:
         uses: actions/checkout@v4
 
      - name: Push to Mirror
+      - name: Push to Mirror
         run: |
-          git remote add mirror https://github.com/NekoSphere/nekoui.git
-          git -c "http.extraheader=AUTHORIZATION: Basic $(echo -n x-oauth-basic:${{ secrets.PAT_NEKOSPHERE }} | base64)" push mirror --mirror
+          git config --global user.name "pas2rust"
+          git config --global user.email "pas2000@proton.me"
+          git remote add mirror https://x-access-token:${{ secrets.PAT_NEKOSPHERE }}@github.com/NekoSphere/nekoui.git
+          git push --mirror mirror
